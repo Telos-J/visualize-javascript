@@ -23,11 +23,15 @@
     <script src="https://www.google-analytics.com/analytics.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js" defer></script>
     <script src="js/plugins.js" defer></script>
-    <script src="js/app.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
 </head>
 
 <body>
-    <div id="monaco-editor-container"></div>
+    <section class="editor-section">
+        <header></header>
+        <main id="monaco-editor-container"></main>
+        <footer><div id="run-button" class="button">Run</div></footer>
+    </section>
     <iframe id="output" title="output"/>
 
 </body>

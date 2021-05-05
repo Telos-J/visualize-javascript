@@ -2,17 +2,59 @@
 @import 'normalize';
 // @import 'monaco-colors';
 
-body {
+html {
+    width: 100vw;
     height: 100vh;
 }
 
-#monaco-editor-container {
-    height: 400px;
-    border: 1px solid black;
-}
-
-#output {
-    border: none;
+body {
+    display: flex;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+}
+
+.editor-section {
+    width: 50%;
+    height: 100%;
+    background-color: #1e1e1e;
+
+    header {
+        width: 100%;
+        height: 2.8rem;
+    }
+
+    #monaco-editor-container {
+        width: 100%;
+        height: calc(100% - 5.6rem);
+    }
+
+    footer {
+        width: 100%;
+        height: 2.8rem;
+
+        .button {
+            display: flex;
+            cursor: pointer;
+            width: 5rem;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #3794ff;
+            font-family: 'Monaco';
+            color: white;
+            transition: all .1s ease-in-out;
+            
+            &:active {
+                background-color: #295f8c;
+            }
+        }
+    }
+}
+
+
+#output {
+    width: 50%;
+    height: 100%;
+    border: none;
 }

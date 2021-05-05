@@ -1,34 +1,39 @@
-require(["vs/editor/editor.main"], main);
+import { parseScript } from './parse.js'
+import { writeOutput } from './output.js'
 
-function refresh() {
-    let output = document.querySelector('#output')
-    let newOutput = output.cloneNode()
-    output.parentNode.replaceChild(newOutput, output)
+require(["vs/editor/editor.main", 'esprima'], main);
 
-    return newOutput
-}
-
-function main() {
+function createEditor(monaco) {
     let container = document.querySelector('#monaco-editor-container')
-    let editor = monaco.editor.create(container, {
+    return monaco.editor.create(container, {
         language: 'javascript',
         theme: 'vs-dark',
         fontFamily: 'Monaco',
         scrollBeyondLastLine: false,
         showEvents: true,
-        value: `const pi = Math.PI`,
+        automaticLayout: true,
+        value: `const foo = 'Hello World!'`,
     });
+}
+
+function runContent(editor, esprima) {
+    let script = editor.getValue()
+
+    try {
+        parseScript(script, esprima)
+        writeOutput(script)
+    } catch (e) {
+        console.error('ParsingError', e)
+    }
+}
+
+function main(monaco, esprima) {
+    let editor = createEditor(monaco)
 
     editor.onDidChangeModelContent((e) => {
-        let html = `<h1></h1>`
-        let script = editor.getValue()
-        let output = refresh()
+    })
 
-        output.contentWindow.document.open();
-        output.contentWindow.document.write(`
-            ${html}<script>${script}</script>
-            <script>console.log(pi)</script>
-        `)
-        output.contentWindow.document.close();
+    document.querySelector('#run-button').addEventListener('click', () => {
+        runContent(editor, esprima)
     })
 }
