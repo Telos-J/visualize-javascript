@@ -1,3 +1,5 @@
+import * as esprima from 'esprima'
+
 class VariableDeclaration {
     constructor(type, name, value) {
         this.type = type;
@@ -6,7 +8,7 @@ class VariableDeclaration {
     }
 }
 
-export function parseScript(script, esprima) {
+export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
     for (let node of syntax.body) {

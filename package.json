@@ -1,17 +1,40 @@
 {
-  "name": " ",
-  "version": "0.0.1",
+  "name": "visualize-javascript",
+  "version": "1.0.0",
   "description": "",
-  "keywords": "",
-  "license": "",
-  "author": "",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "doc"
+  },
   "scripts": {
-    "build": "parcel build index.html",
-    "dev": "parcel index.html --open",
-    "start": "npm run build && npm run dev",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Telos-J/visualize-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Telos-J/visualize-javascript/issues"
+  },
+  "homepage": "https://github.com/Telos-J/visualize-javascript#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "sass": "^1.34.0",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "esprima": "^4.0.1",
+    "monaco-editor": "^0.24.0",
+    "monaco-editor-webpack-plugin": "^3.1.0"
   }
 }

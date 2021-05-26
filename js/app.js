@@ -1,39 +1,33 @@
+import * as monaco from 'monaco-editor'
+import * as esprima from 'esprima'
 import { parseScript } from './parse.js'
 import { writeOutput } from './output.js'
+import './plugins.js'
 
-require(["vs/editor/editor.main", 'esprima'], main);
+const container = document.querySelector('#monaco-editor-container')
+const runButton = document.querySelector('#run-button')
+const editor = monaco.editor.create(container, {
+    language: 'javascript',
+    theme: 'vs-dark',
+    fontFamily: 'Monaco',
+    scrollBeyondLastLine: false,
+    showEvents: true,
+    automaticLayout: true,
+    value: `const foo = 'Hello World!'`,
+});
 
-function createEditor(monaco) {
-    let container = document.querySelector('#monaco-editor-container')
-    return monaco.editor.create(container, {
-        language: 'javascript',
-        theme: 'vs-dark',
-        fontFamily: 'Monaco',
-        scrollBeyondLastLine: false,
-        showEvents: true,
-        automaticLayout: true,
-        value: `const foo = 'Hello World!'`,
-    });
-}
+editor.onDidChangeModelContent((e) => {
+})
 
-function runContent(editor, esprima) {
+function runContent() {
     let script = editor.getValue()
 
     try {
-        parseScript(script, esprima)
+        parseScript(script)
         writeOutput(script)
     } catch (e) {
         console.error('ParsingError', e)
     }
 }
 
-function main(monaco, esprima) {
-    let editor = createEditor(monaco)
-
-    editor.onDidChangeModelContent((e) => {
-    })
-
-    document.querySelector('#run-button').addEventListener('click', () => {
-        runContent(editor, esprima)
-    })
-}
+runButton.addEventListener('click', runContent)
