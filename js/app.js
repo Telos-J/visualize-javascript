@@ -1,3 +1,4 @@
+import '../css/style.scss'
 import * as monaco from 'monaco-editor'
 import * as esprima from 'esprima'
 import { parseScript } from './parse.js'
