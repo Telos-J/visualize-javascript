@@ -25,7 +25,7 @@ function runContent() {
 
     try {
         parseScript(script)
-        writeOutput(script)
+        // writeOutput(script)
     } catch (e) {
         console.error('ParsingError', e)
     }

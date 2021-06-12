@@ -1,2 +1,2 @@
 const speechText = document.querySelector('#speech-text')
-speechText.innerText = 'I am genius'
+// speechText.innerText = 'I am genius'

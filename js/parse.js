@@ -23,7 +23,9 @@ export function parseScript(script) {
     for (let node of syntax.body){
         if (node.type === 'ExpressionStatement') {
             const callee = node.expression.callee
-            console.table(new ExpressionStatement(callee.object.name, callee.property.name, node.expression.arguments[0].value))
+            const value =  node.expression.arguments[0].value
+            console.table(new ExpressionStatement(callee.object.name, callee.property.name, value))
+            outputConsole(value)
         }
         else if (node.type === 'VariableDeclaration') {
             for (let declaration of node.declarations) {
@@ -31,4 +33,9 @@ export function parseScript(script) {
             }
         }
     }
+}
+
+function outputConsole(value) {
+    const output = document.querySelector('#output').contentWindow.document
+    output.body.querySelector('#speech-text').innerHTML = value
 }
