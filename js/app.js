@@ -14,7 +14,7 @@ const editor = monaco.editor.create(container, {
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
-    value: `const foo = 'Hello World!'`,
+    value: `console.log('Hello World!')`,
 });
 
 editor.onDidChangeModelContent((e) => {
