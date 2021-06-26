@@ -8,6 +8,8 @@ class VariableDeclaration {
     }
 }
 
+const variableDeclarations = {}
+
 class ExpressionStatement {
     constructor(object, property, argument) {
         this.object = object;
@@ -23,13 +25,22 @@ export function parseScript(script) {
     for (let node of syntax.body){
         if (node.type === 'ExpressionStatement') {
             const callee = node.expression.callee
-            const value =  node.expression.arguments[0].value
+            const argument = node.expression.arguments[0]
+            let value
+
+            if (argument.type === 'Literal')
+                value =  argument.value
+            else if (argument.type === 'Identifier')
+                value = variableDeclarations[argument.name].value
+
             console.table(new ExpressionStatement(callee.object.name, callee.property.name, value))
             outputConsole(value)
         }
         else if (node.type === 'VariableDeclaration') {
             for (let declaration of node.declarations) {
-                console.table(new VariableDeclaration(node.kind, declaration.id.name, declaration.init.value))
+                const variableDeclaration = new VariableDeclaration(node.kind, declaration.id.name, declaration.init.value)
+                variableDeclarations[variableDeclaration.name] = variableDeclaration
+                console.table(variableDeclaration)
             }
         }
     }
