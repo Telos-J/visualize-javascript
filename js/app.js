@@ -10,7 +10,7 @@ const runButton = document.querySelector('#run-button')
 const editor = monaco.editor.create(container, {
     language: 'javascript',
     theme: 'vs-dark',
-    fontFamily: 'Monaco',
+    fontSize: '20px',
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
