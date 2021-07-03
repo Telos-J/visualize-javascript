@@ -1,4 +1,6 @@
 import * as esprima from 'esprima'
+const variableDeclarations = {}
+let i = 0, mouthAnimation, output, mouths
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -8,7 +10,6 @@ class VariableDeclaration {
     }
 }
 
-const variableDeclarations = {}
 
 class ExpressionStatement {
     constructor(object, property, argument) {
@@ -47,6 +48,34 @@ export function parseScript(script) {
 }
 
 function outputConsole(value) {
-    const output = document.querySelector('#output').contentWindow.document
-    output.body.querySelector('#speech-text').innerHTML = value
+
+    output.querySelector('#speech-text').innerHTML = value
+    console.log(value.length)
+    startMouthAnimation()
+    setTimeout(stopMouthAnimation, value.length * 100)
 }
+
+function nextMouth() {
+    for (let j=0; j<mouths.length; j++) {
+        if (i === j) mouths[i].style.display = 'inline'
+        else mouths[j].style.display = 'none'
+    }
+
+    i++
+    if (i === mouths.length) i = 0
+}
+
+function startMouthAnimation() {
+    mouthAnimation = setInterval(nextMouth, 100)
+}
+
+function stopMouthAnimation() {
+    clearInterval(mouthAnimation)
+}
+
+
+addEventListener('load' , () => {
+    output = document.querySelector('#output').contentWindow.document
+    mouths = output.querySelectorAll('.mouth')    
+    nextMouth()
+})
