@@ -7,11 +7,10 @@
     <title>Learn console.log</title>
     <style>
         body {
-            background-color: #f0efff;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            background-color: #f0efff;
+            
         }
 
         #computer {
@@ -39,14 +38,38 @@
             align-items: center;
             font-family: sans-serif;
             font-size: 1.5rem;
-            color: #2f2998;
             text-align: center;
         }
 
     </style>
+    <script src="../js/consolelog.js"defer></script>
 </head>
 <body>
-    <img id="computer" src="../img/computer.png" alt="computer">
+        <svg id="computer" width="356" height="354" viewBox="0 0 356 354" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="monitor">
+        <path id="bezel" d="M0 20C0 8.95431 8.95431 0 20 0H336C347.046 0 356 8.95431 356 20V232H0V20Z" fill="#3C3C3B"/>
+        <path id="bottom" d="M0 232H356V254C356 265.046 347.046 274 336 274H20C8.9543 274 0 265.046 0 254V232Z" fill="#C4C4C4"/>
+        <path id="button" d="M178 262C182.971 262 187 257.971 187 253C187 248.029 182.971 244 178 244C173.029 244 169 248.029 169 253C169 257.971 173.029 262 178 262Z" fill="#3C3C3B"/>
+        <path id="screen" d="M336 20H20V212H336V20Z" fill="#119AEE"/>
+        </g>
+        <path id="body" d="M125 274H231L241 326H115L125 274Z" fill="#969695"/>
+        <path id="platform" d="M73 354C73 338.536 85.536 326 101 326H255C270.464 326 283 338.536 283 354H73Z" fill="#C4C4C4"/>
+        <path id="left eyebrow" d="M60.0001 79.2219L81.5 57.7218" stroke="#3C3C3B" stroke-width="11" stroke-linecap="round"/>
+        <path id="right eyebrow" d="M296.5 79.2219L275 57.7218" stroke="#3C3C3B" stroke-width="11" stroke-linecap="round"/>
+        <g id="left eye">
+        <path id="left eyesocket" d="M99.5 127C115.24 127 128 114.24 128 98.5C128 82.7599 115.24 70 99.5 70C83.7599 70 71 82.7599 71 98.5C71 114.24 83.7599 127 99.5 127Z" fill="white"/>
+        <path id="left pupil" d="M89.5 118C95.8513 118 101 112.851 101 106.5C101 100.149 95.8513 95 89.5 95C83.1487 95 78 100.149 78 106.5C78 112.851 83.1487 118 89.5 118Z" fill="#3C3C3B"/>
+        </g>
+        <g id="right eye">
+        <path id="right eyesocket" d="M257.5 127C273.24 127 286 114.24 286 98.5C286 82.7599 273.24 70 257.5 70C241.76 70 229 82.7599 229 98.5C229 114.24 241.76 127 257.5 127Z" fill="white"/>
+        <path id="right pupil" d="M247.5 118C253.851 118 259 112.851 259 106.5C259 100.149 253.851 95 247.5 95C241.149 95 236 100.149 236 106.5C236 112.851 241.149 118 247.5 118Z" fill="#3C3C3B"/>
+        </g>
+        <path id="mouth3" class="mouth" d="M178.5 145C182.642 145 186 141.642 186 137.5C186 133.358 182.642 130 178.5 130C174.358 130 171 133.358 171 137.5C171 141.642 174.358 145 178.5 145Z" fill="white"/>
+        <path id="mouth2" class="mouth" d="M178.5 157C189.27 157 198 148.27 198 137.5C198 126.73 189.27 118 178.5 118C167.73 118 159 126.73 159 137.5C159 148.27 167.73 157 178.5 157Z" fill="white"/>
+        <path id="mouth1" class="mouth" d="M147 135.25C147 130.694 150.694 127 155.25 127H200.75C205.306 127 209 130.694 209 135.25C209 142.844 202.844 149 195.25 149H160.75C153.156 149 147 142.844 147 135.25Z" fill="white"/>
+        <path id="mouth" class="mouth" d="M152 134H204" stroke="white" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+        
     <img id="speech-bubble" src="../img/speech-bubble.svg" alt="speech-bubble">
     <div id="speech-text">Hello World!</div>
 </body>
