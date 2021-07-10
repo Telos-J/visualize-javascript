@@ -1,4 +1,5 @@
 import * as esprima from 'esprima'
+import { gsap } from 'gsap'
 const variableDeclarations = {}
 let i = 0, mouthAnimation, output, mouths
 
@@ -50,6 +51,9 @@ export function parseScript(script) {
 function outputConsole(value) {
 
     output.querySelector('#speech-text').innerHTML = value
+    const speechBubble = output.querySelector('#speech-bubble')
+    gsap.from(speechBubble, { scale: 0, x: 50, y: 150, transformOrigin: 'bottom right' })
+
     console.log(value.length)
     startMouthAnimation()
     setTimeout(stopMouthAnimation, value.length * 100)
