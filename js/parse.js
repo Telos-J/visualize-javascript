@@ -49,16 +49,15 @@ export function parseScript(script) {
 }
 
 function outputConsole(value) {
-
+    if (!mouthAnimation) {
     output.querySelector('#speech-text').innerHTML = value
     const speechBubble = output.querySelector('#speech-bubble')
     gsap.from(speechBubble, { scale: 0, x: 50, y: 150, transformOrigin: 'bottom right' })
 
-    console.log(value.length)
     startMouthAnimation()
     setTimeout(stopMouthAnimation, value.length * 100)
+    }
 }
-
 function nextMouth() {
     for (let j=0; j<mouths.length; j++) {
         if (i === j) mouths[i].style.display = 'inline'
@@ -75,6 +74,7 @@ function startMouthAnimation() {
 
 function stopMouthAnimation() {
     clearInterval(mouthAnimation)
+    mouthAnimation = undefined
 }
 
 
