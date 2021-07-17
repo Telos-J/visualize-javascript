@@ -24,14 +24,14 @@ export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
 
-    for (let node of syntax.body){
+    for (let node of syntax.body) {
         if (node.type === 'ExpressionStatement') {
             const callee = node.expression.callee
             const argument = node.expression.arguments[0]
             let value
 
             if (argument.type === 'Literal')
-                value =  argument.value
+                value = argument.value
             else if (argument.type === 'Identifier')
                 value = variableDeclarations[argument.name].value
 
@@ -50,16 +50,17 @@ export function parseScript(script) {
 
 function outputConsole(value) {
     if (!mouthAnimation) {
-    output.querySelector('#speech-text').innerHTML = value
-    const speechBubble = output.querySelector('#speech-bubble')
-    gsap.from(speechBubble, { scale: 0, x: 50, y: 150, transformOrigin: 'bottom right' })
+        output.querySelector('#speech-text').innerHTML = value
+        const speechBubble = output.querySelector('#speech-bubble')
+        gsap.from(speechBubble, { scale: 0, x: 50, y: 150, transformOrigin: 'bottom right' })
 
-    startMouthAnimation()
-    setTimeout(stopMouthAnimation, value.length * 100)
+        startMouthAnimation()
+        setTimeout(stopMouthAnimation, value.length * 100)
     }
 }
+
 function nextMouth() {
-    for (let j=0; j<mouths.length; j++) {
+    for (let j = 0; j < mouths.length; j++) {
         if (i === j) mouths[i].style.display = 'inline'
         else mouths[j].style.display = 'none'
     }
@@ -78,8 +79,8 @@ function stopMouthAnimation() {
 }
 
 
-addEventListener('load' , () => {
+addEventListener('load', () => {
     output = document.querySelector('#output').contentWindow.document
-    mouths = output.querySelectorAll('.mouth')    
+    mouths = output.querySelectorAll('.mouth')
     nextMouth()
 })
