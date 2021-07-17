@@ -53,27 +53,32 @@
     <div id="container">
         <svg id="computer" width="476" height="549" viewBox="0 0 476 549" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="monitor">
-            <path id="bezel" d="M120 215C120 203.954 128.954 195 140 195H456C467.046 195 476 203.954 476 215V427H120V215Z" fill="#3C3C3B"/>
             <path id="bottom" d="M120 427H476V449C476 460.046 467.046 469 456 469H140C128.954 469 120 460.046 120 449V427Z" fill="#C4C4C4"/>
             <path id="button" d="M298 457C302.971 457 307 452.971 307 448C307 443.029 302.971 439 298 439C293.029 439 289 443.029 289 448C289 452.971 293.029 457 298 457Z" fill="#3C3C3B"/>
             <path id="screen" d="M456 215H140V407H456V215Z" fill="#119AEE"/>
+            <g id="left eye">
+                <path id="left-eyesocket" d="M219.5 322C235.24 322 248 309.24 248 293.5C248 277.76 235.24 265 219.5 265C203.76 265 191 277.76 191 293.5C191 309.24 203.76 322 219.5 322Z" fill="white"/>
+                <path id="left-pupil" class="pupil" d="M209.5 313C215.851 313 221 307.851 221 301.5C221 295.149 215.851 290 209.5 290C203.149 290 198 295.149 198 301.5C198 307.851 203.149 313 209.5 313Z" fill="#3C3C3B"/>
+                <path id="left-eyeLid" class="eyelid"d="M219.5 265C201.5 265 191 274.5 191 274.5V208H248V274.5C248 274.5 237.5 265 219.5 265Z" fill="#119AEE"/>
+                </g>
+                <g id="right eye">
+                <path id="right-eyesocket" d="M377.5 322C393.24 322 406 309.24 406 293.5C406 277.76 393.24 265 377.5 265C361.76 265 349 277.76 349 293.5C349 309.24 361.76 322 377.5 322Z" fill="white"/>
+                <path id="right-pupil" class="pupil" d="M367.5 313C373.851 313 379 307.851 379 301.5C379 295.149 373.851 290 367.5 290C361.149 290 356 295.149 356 301.5C356 307.851 361.149 313 367.5 313Z" fill="#3C3C3B"/>
+                <path id="right-eyeLid" class="eyelid"d="M377.5 265C359.5 265 349 274.5 349 274.5V208H406V274.5C406 274.5 395.5 265 377.5 265Z" fill="#119AEE"/>
+                </g>
+                <path id="left-eyebrow" d="M180 274.222L201.5 252.722" stroke="#3C3C3B" stroke-width="11" stroke-linecap="round"/>
+                <path id="right-eyebrow" d="M416.5 274.222L395 252.722" stroke="#3C3C3B" stroke-width="11" stroke-linecap="round"/>
+                <path id="mouth" class="mouth" d="M272 329H324" stroke="white" stroke-width="10" stroke-linecap="round"/>
+                <path id="mouth1" class="mouth" d="M267 330.25C267 325.694 270.694 322 275.25 322H320.75C325.306 322 329 325.694 329 330.25C329 337.844 322.844 344 315.25 344H280.75C273.156 344 267 337.844 267 330.25Z" fill="white" display="none"/>
+                <path id="mouth2" class="mouth" d="M298.5 352C309.27 352 318 343.27 318 332.5C318 321.73 309.27 313 298.5 313C287.73 313 279 321.73 279 332.5C279 343.27 287.73 352 298.5 352Z" fill="white" display="none"/>
+                <path id="mouth3" class="mouth" d="M298.5 340C302.642 340 306 336.642 306 332.5C306 328.358 302.642 325 298.5 325C294.358 325 291 328.358 291 332.5C291 336.642 294.358 340 298.5 340Z" fill="white" display="none"/>
+                <path id="bezel" fill-rule="evenodd" clip-rule="evenodd" d="M140 195C128.954 195 120 203.954 120 215V427H476V215C476 203.954 467.046 195 456 195H140ZM140 215H456V407H140V215Z" fill="#3C3C3B"/>
             </g>
             <path id="body" d="M245 469H351L361 521H235L245 469Z" fill="#969695"/>
             <path id="platform" d="M193 549C193 533.536 205.536 521 221 521H375C390.464 521 403 533.536 403 549H193Z" fill="#C4C4C4"/>
-            <path id="left eyebrow" d="M180 274.222L201.5 252.722" stroke="#3C3C3B" stroke-width="11" stroke-linecap="round"/>
-            <path id="right eyebrow" d="M416.5 274.222L395 252.722" stroke="#3C3C3B" stroke-width="11" stroke-linecap="round"/>
-            <g id="left eye">
-            <path id="left eyesocket" d="M219.5 322C235.24 322 248 309.24 248 293.5C248 277.76 235.24 265 219.5 265C203.76 265 191 277.76 191 293.5C191 309.24 203.76 322 219.5 322Z" fill="white"/>
-            <path id="left pupil" d="M209.5 313C215.851 313 221 307.851 221 301.5C221 295.149 215.851 290 209.5 290C203.149 290 198 295.149 198 301.5C198 307.851 203.149 313 209.5 313Z" fill="#3C3C3B"/>
-            </g>
-            <g id="right eye">
-            <path id="right eyesocket" d="M377.5 322C393.24 322 406 309.24 406 293.5C406 277.76 393.24 265 377.5 265C361.76 265 349 277.76 349 293.5C349 309.24 361.76 322 377.5 322Z" fill="white"/>
-            <path id="right pupil" d="M367.5 313C373.851 313 379 307.851 379 301.5C379 295.149 373.851 290 367.5 290C361.149 290 356 295.149 356 301.5C356 307.851 361.149 313 367.5 313Z" fill="#3C3C3B"/>
-            </g>
-            <path id="mouth" class="mouth" d="M272 329H324" stroke="white" stroke-width="10" stroke-linecap="round"/>
-            <path id="mouth1" class="mouth" d="M267 330.25C267 325.694 270.694 322 275.25 322H320.75C325.306 322 329 325.694 329 330.25C329 337.844 322.844 344 315.25 344H280.75C273.156 344 267 337.844 267 330.25Z" fill="white"/>
-            <path id="mouth2" class="mouth" d="M298.5 352C309.27 352 318 343.27 318 332.5C318 321.73 309.27 313 298.5 313C287.73 313 279 321.73 279 332.5C279 343.27 287.73 352 298.5 352Z" fill="white"/>
-            <path id="mouth3" class="mouth" d="M298.5 340C302.642 340 306 336.642 306 332.5C306 328.358 302.642 325 298.5 325C294.358 325 291 328.358 291 332.5C291 336.642 294.358 340 298.5 340Z" fill="white"/>
+            
+            \
+            
             <g id="speech-bubble">
             <path id="rect7531" d="M113.9 3.09998C72.9 3.19998 33 6.60002 20.3 13.9C-6.09999 29.2 1.10001 123.6 20.3 134.7C24 136.8 32.8 138.6 44.7 140C44.1 149.4 45 162.9 52.5 173.1C69.8 196.4 103.5 193.1 103.5 193.1C103.5 193.1 72.5 181.1 64.3 163.2C61.2 156.3 61.4 148.6 62.9 141.6C117 145.5 203.2 143.6 218.6 134.7C240.8 121.9 242.4 27.6 218.6 13.9C206.6 7.00002 159.6 2.99998 113.9 3.09998Z" fill="white" stroke="black" stroke-width="4.2733" stroke-linejoin="round"/>
             <text id="speech-text" x="25%" y="14%" dominant-baseline="middle" text-anchor="middle" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em">Hello World!</text>

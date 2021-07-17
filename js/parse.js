@@ -59,6 +59,19 @@ function outputConsole(value) {
     }
 }
 
+function blink() {
+    const eyelids = output.querySelectorAll('.eyelid')
+    gsap.timeline({ repeat: -1, yoyo: true})
+        .to(eyelids, { y: 57, delay: 3, duration: 0.1 })
+}
+
+function movePupil() {
+    const pupils = output.querySelectorAll('.pupil')
+    gsap.timeline({ repeat: -1, yoyo: true})
+        .to(pupils, { x: 20, delay: 2, duration: 0.2})
+
+}
+
 function nextMouth() {
     for (let j = 0; j < mouths.length; j++) {
         if (i === j) mouths[i].style.display = 'inline'
@@ -79,8 +92,11 @@ function stopMouthAnimation() {
 }
 
 
+
 addEventListener('load', () => {
     output = document.querySelector('#output').contentWindow.document
     mouths = output.querySelectorAll('.mouth')
     nextMouth()
+    blink()
+    movePupil()
 })
