@@ -1,7 +1,7 @@
 import * as esprima from 'esprima'
 import { gsap } from 'gsap'
 const variableDeclarations = {}
-let i = 0, mouthAnimation, output, mouths
+let i = 0, talkTimeline, output
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -49,13 +49,13 @@ export function parseScript(script) {
 }
 
 function outputConsole(value) {
-    if (!mouthAnimation) {
+    if (!talkTimeline?.isActive()) {
         output.querySelector('#speech-text').innerHTML = value
         const speechBubble = output.querySelector('#speech-bubble')
+        gsap.to(speechBubble, { display: 'inline' })
         gsap.from(speechBubble, { scale: 0, x: 50, y: 150, transformOrigin: 'bottom right' })
 
-        startMouthAnimation()
-        setTimeout(stopMouthAnimation, value.length * 100)
+        talk(value.length * 0.1)
     }
 }
 
@@ -72,31 +72,26 @@ function movePupil() {
 
 }
 
-function nextMouth() {
-    for (let j = 0; j < mouths.length; j++) {
-        if (i === j) mouths[i].style.display = 'inline'
-        else mouths[j].style.display = 'none'
-    }
+function talk(seconds) {
+    const mouths = output.querySelectorAll('.mouth')
+    const speechBubble = output.querySelector('#speech-bubble')
+    talkTimeline = gsap.timeline({ repeat: 3 })
+        .set(mouths[0], { display: 'none'}, 0)
+        .set(mouths[1], { display: 'inline'}, 0)
+        .set(mouths[1], { display: 'none'}, 0.1)
+        .set(mouths[2], { display: 'inline'}, 0.1)
+        .set(mouths[2], { display: 'none'}, 0.2)
+        .set(mouths[3], { display: 'inline'}, 0.2)
+        .set(mouths[3], { display: 'none'}, 0.3)
+        .set(mouths[0], { display: 'inline'}, 0.3)
 
-    i++
-    if (i === mouths.length) i = 0
-}
-
-function startMouthAnimation() {
-    mouthAnimation = setInterval(nextMouth, 100)
-}
-
-function stopMouthAnimation() {
-    clearInterval(mouthAnimation)
-    mouthAnimation = undefined
+    gsap.to(speechBubble, { display: 'none', delay: 1})
 }
 
 
 
 addEventListener('load', () => {
     output = document.querySelector('#output').contentWindow.document
-    mouths = output.querySelectorAll('.mouth')
-    nextMouth()
     blink()
     movePupil()
 })
