@@ -73,17 +73,19 @@ function movePupil() {
 }
 
 function talk(seconds) {
-    const mouths = output.querySelectorAll('.mouth')
+    const smile = output.querySelectorAll('#smile')
+    const talk = output.querySelectorAll('.talk')
     const speechBubble = output.querySelector('#speech-bubble')
-    talkTimeline = gsap.timeline({ repeat: 3 })
-        .set(mouths[0], { display: 'none'}, 0)
-        .set(mouths[1], { display: 'inline'}, 0)
-        .set(mouths[1], { display: 'none'}, 0.1)
-        .set(mouths[2], { display: 'inline'}, 0.1)
-        .set(mouths[2], { display: 'none'}, 0.2)
-        .set(mouths[3], { display: 'inline'}, 0.2)
-        .set(mouths[3], { display: 'none'}, 0.3)
-        .set(mouths[0], { display: 'inline'}, 0.3)
+    gsap.set(smile, { display: 'none' })
+    talkTimeline = gsap.timeline({ repeat: 3, onComplete: () => { gsap.set(smile, { display: 'inline' })} })
+        .set(talk[0], { display: 'inline'}, 0)
+        .set(talk[0], { display: 'none'}, 0.1)
+        .set(talk[1], { display: 'inline'}, 0.1)
+        .set(talk[1], { display: 'none'}, 0.2)
+        .set(talk[2], { display: 'inline'}, 0.2)
+        .set(talk[2], { display: 'none'}, 0.3)
+        .set(talk[3], { display: 'inline'}, 0.3)
+        .set(talk[3], { display: 'none'}, 0.4)
 
     gsap.to(speechBubble, { display: 'none', delay: 1})
 }
