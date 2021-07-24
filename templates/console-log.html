@@ -26,15 +26,16 @@
         }
 
         #speech-text {
+            display: none;
             position: absolute;
+            left: 22%;
+            top: 5%;
             width: 40vw;
-            height: 20vw;
-            bottom: 60vw;
+            height: 22vw;
             justify-content: center;
-            display: flex;
             align-items: center;
             font-family: sans-serif;
-            font-size: 1.5rem;
+            font-size: 1rem;
             text-align: center;
         }
 
@@ -77,10 +78,8 @@
             </g>
             <path id="body" d="M306 637H411L421 689H295L305 637Z" fill="#969695"/>
             <path id="platform" d="M253 717C253 701.536 265.536 689 281 689H435C450.464 689 463 701.536 463 717H253Z" fill="#C4C4C4"/>
-            <g id="speech-bubble" display='none'>
-                <path id="rect7531" d="M190.97 3.00347C121.418 3.19292 53.7314 9.63427 32.1871 23.464C-12.5979 52.4497 -0.383837 231.289 32.1871 252.318C38.4638 256.296 53.3921 259.707 73.5793 262.359C72.5615 280.167 74.0881 305.743 86.8111 325.066C116.159 369.208 173.328 362.956 173.328 362.956C173.328 362.956 120.739 340.222 106.829 306.311C101.57 293.239 101.909 278.651 104.454 265.39C196.229 272.779 342.459 269.179 368.584 252.318C406.244 228.069 408.958 49.4185 368.584 23.464C348.227 10.3921 268.496 2.81402 190.97 3.00347V3.00347Z" fill="white" stroke="black" stroke-width="4.2733" stroke-linejoin="round"/>
-                <text id="speech-text" x="38%" y="19%" dominant-baseline="middle" text-anchor="middle" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em">Hello World!</text>
-            </g>
+                <path id="speech-bubble" d="M190.97 3.00347C121.418 3.19292 53.7314 9.63427 32.1871 23.464C-12.5979 52.4497 -0.383837 231.289 32.1871 252.318C38.4638 256.296 53.3921 259.707 73.5793 262.359C72.5615 280.167 74.0881 305.743 86.8111 325.066C116.159 369.208 173.328 362.956 173.328 362.956C173.328 362.956 120.739 340.222 106.829 306.311C101.57 293.239 101.909 278.651 104.454 265.39C196.229 272.779 342.459 269.179 368.584 252.318C406.244 228.069 408.958 49.4185 368.584 23.464C348.227 10.3921 268.496 2.81402 190.97 3.00347V3.00347Z" fill="white" stroke="black" stroke-width="4.2733" stroke-linejoin="round" display='none'/>
         </svg>
+        <div id="speech-text">Hello World!</div>
 </body>
 </html>

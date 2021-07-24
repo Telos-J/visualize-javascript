@@ -24,19 +24,19 @@ export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
 
+    let value = ''
     for (let node of syntax.body) {
         if (node.type === 'ExpressionStatement') {
             const callee = node.expression.callee
             const argument = node.expression.arguments[0]
-            let value
 
             if (argument.type === 'Literal')
-                value = argument.value
+                value += argument.value
             else if (argument.type === 'Identifier')
-                value = variableDeclarations[argument.name].value
+                value += variableDeclarations[argument.name].value
 
             console.table(new ExpressionStatement(callee.object.name, callee.property.name, value))
-            outputConsole(value)
+            
         }
         else if (node.type === 'VariableDeclaration') {
             for (let declaration of node.declarations) {
@@ -45,15 +45,19 @@ export function parseScript(script) {
                 console.table(variableDeclaration)
             }
         }
+        outputConsole(value)
     }
 }
 
 function outputConsole(value) {
     if (!talkTimeline?.isActive()) {
-        output.querySelector('#speech-text').innerHTML = value
+        const speechText = output.querySelector('#speech-text')
         const speechBubble = output.querySelector('#speech-bubble')
+        speechText.innerHTML = value
         gsap.to(speechBubble, { display: 'inline' })
-        gsap.from(speechBubble, { scale: 0, x: 50, y: 150, transformOrigin: 'bottom right' })
+        gsap.from(speechBubble, { scale: 0, x: -50, y: 150, transformOrigin: 'bottom right' })
+        gsap.to(speechText, {display: 'flex'})
+        gsap.from(speechText, { scale: 0, x: -15, y: 150, transformOrigin: 'bottom right' })
 
         talk(value.length * 0.1)
     }
@@ -75,9 +79,10 @@ function movePupil() {
 function talk(seconds) {
     const smile = output.querySelectorAll('#smile')
     const talk = output.querySelectorAll('.talk')
+    const speechText = output.querySelector('#speech-text')
     const speechBubble = output.querySelector('#speech-bubble')
     gsap.set(smile, { display: 'none' })
-    talkTimeline = gsap.timeline({ repeat: 3, onComplete: () => { gsap.set(smile, { display: 'inline' })} })
+    talkTimeline = gsap.timeline({ repeat: seconds * 2, onComplete: () => { gsap.set(smile, { display: 'inline' })} })
         .set(talk[0], { display: 'inline'}, 0)
         .set(talk[0], { display: 'none'}, 0.1)
         .set(talk[1], { display: 'inline'}, 0.1)
@@ -87,7 +92,7 @@ function talk(seconds) {
         .set(talk[3], { display: 'inline'}, 0.3)
         .set(talk[3], { display: 'none'}, 0.4)
 
-    gsap.to(speechBubble, { display: 'none', delay: 1})
+    gsap.to([speechBubble, speechText], { display: 'none', delay: seconds})
 }
 
 
