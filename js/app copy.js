@@ -13,7 +13,7 @@ const editor = monaco.editor.create(container, {
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
-    value: `const animal = 'rabbit'`,
+    value: `console.log('Hello World!')`,
 });
 
 editor.onDidChangeModelContent((e) => {
