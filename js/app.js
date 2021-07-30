@@ -1,8 +1,7 @@
 import '../css/style.scss'
 import * as monaco from 'monaco-editor'
-import * as esprima from 'esprima'
-import { parseScript } from './parse.js'
-import { writeOutput } from './output.js'
+import { parseScript } from './parse'
+import { outputConsole } from './output'
 import './plugins.js'
 
 const container = document.querySelector('#monaco-editor-container')
@@ -25,7 +24,7 @@ function runContent() {
 
     try {
         parseScript(script)
-        // writeOutput(script)
+        outputConsole()
     } catch (e) {
         console.error('ParsingError', e)
     }
