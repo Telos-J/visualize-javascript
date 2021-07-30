@@ -46,4 +46,4 @@ export function parseScript(script) {
     }
 }
 
-export { expressionStatements }
+export { variableDeclarations, expressionStatements }
