@@ -5,7 +5,8 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        main: './js/app.js',
+        main: './js/consolelog.js',
+        variable: './js/variable.js'
     },
     output: {
         filename: 'main.[contenthash].js',
@@ -48,9 +49,9 @@ module.exports = {
             chunks: ['main']
         }),
         new HtmlWebpackPlugin({
-            template: 'templates/console-log.html',
-            filename: 'templates/console-log.html',
-            chunks: ['consolelog']
+            template: 'templates/variable.html',
+            filename: 'variable.html',
+            chunks: ['variable']
         }),
     ],
     devServer: {

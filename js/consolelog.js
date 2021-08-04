@@ -1,11 +1,13 @@
 import '../css/style.scss'
 import * as monaco from 'monaco-editor'
 import { parseScript } from './parse'
-import { outputConsole } from './output'
+import { outputConsole } from './consolelog-output'
 import './plugins.js'
 
 const container = document.querySelector('#monaco-editor-container')
 const runButton = document.querySelector('#run-button')
+const prevButton = document.querySelector('#prev-button')
+const nextButton = document.querySelector('#next-button')
 const editor = monaco.editor.create(container, {
     language: 'javascript',
     theme: 'vs-dark',
@@ -31,3 +33,4 @@ function runContent() {
 }
 
 runButton.addEventListener('click', runContent)
+nextButton.addEventListener('click', () => location.href = '/variable.html')

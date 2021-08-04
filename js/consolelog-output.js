@@ -30,7 +30,6 @@ function writeOutput(script) {
 
 function outputConsole() {
     let value = ''
-    console.log(expressionStatements)
     for (const expressionStatement of expressionStatements) {
         value += expressionStatement.value + '<br>'
     }

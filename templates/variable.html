@@ -1,55 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn variables</title>
-<style>
-        body {
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
-            #container {
-                bottom: 0;
-                position: absolute;
-                width: 100vw;
-                justify-content: center;
-                display: flex;
-        }
-        
-            #name {
-                position: absolute;
-                bottom: 2rem;
+    <meta charset="utf-8">
+    <title>Visualize Javascript</title>
+    <meta name="description" content="Learn Javascript by visualizing what you code!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#efd81d">
 
-        }
-
-            #value {
-                position: absolute;
-                bottom: 15rem;
-        }
-
-    </style>
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="apple-touch-icon" href="../icon.png">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    <div id="container">
-    <svg id="box" width="592" height="436" viewBox="0 0 592 436" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="wall">
-        <path d="M477 151.5L293 69V249L472.5 332L477 151.5Z" fill="#814D27"/>
-        <path d="M293 69L98 145.5L104.5 325.5L293 240.5V69Z" fill="#9B683D"/>
-        <path d="M280.5 436L104.5 325.5L98 145.5L280.5 243.5V436Z" fill="#865934"/>
-        <path d="M477 151.5L472.5 332L280.5 436V243.5L477 151.5Z" fill="#A47347"/>
-        </g>
-        <g id="lid">
-            <path id="Vector 7" d="M280.5 243.5L98 145.5L0.5 211.5L186.5 311.5L280.5 243.5Z" fill="#EBAB70"/>
-            <path id="Vector 8" d="M280.5 243.5L477 151.5L591.5 221.5L394 312.5L280.5 243.5Z" fill="#EFAD71"/>
-            <path id="Vector 9" d="M477 151.5L293 69L390 20L574 95.5L477 151.5Z" fill="#F0B074"/>
-            <path id="Vector 10" d="M293 69L98 145.5L4.5 80L207 0.5L293 69Z" fill="#E4A46B"/>
-            </g>
-        </svg>
-        <div id="name"></div>     
-        <div id="value"></div>   
-    </div>
+    <section class="editor-section">
+        <header></header>
+        <main id="monaco-editor-container"></main>
+        <footer>
+            <div id="run-button" class="button">Run</div>
+            <div class="nav-button-container">
+                <div id="prev-button" class="button">Prev</div>
+                <div id="next-button" class="button">Next</div>
+            </div>
+        </footer>
+    </section>
+    <iframe id="output" title="output" src="templates/variable-output.html"/>
 </body>
+
 </html>
