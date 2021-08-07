@@ -18,6 +18,16 @@
                 justify-content: center;
                 display: flex;
         }
+            #box {
+                width: 50vw;
+        }
+
+            #box #slider {
+                transition: transform 1s;
+        }
+            #box.closed #slider {
+                transform: translateY(42.5%)
+        }
         
             #name {
                 position: absolute;
@@ -34,22 +44,16 @@
 </head>
 <body>
     <div id="container">
-    <svg id="box" width="592" height="436" viewBox="0 0 592 436" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="wall">
-        <path d="M477 151.5L293 69V249L472.5 332L477 151.5Z" fill="#814D27"/>
-        <path d="M293 69L98 145.5L104.5 325.5L293 240.5V69Z" fill="#9B683D"/>
-        <path d="M280.5 436L104.5 325.5L98 145.5L280.5 243.5V436Z" fill="#865934"/>
-        <path d="M477 151.5L472.5 332L280.5 436V243.5L477 151.5Z" fill="#A47347"/>
-        </g>
-        <g id="lid">
-            <path id="Vector 7" d="M280.5 243.5L98 145.5L0.5 211.5L186.5 311.5L280.5 243.5Z" fill="#EBAB70"/>
-            <path id="Vector 8" d="M280.5 243.5L477 151.5L591.5 221.5L394 312.5L280.5 243.5Z" fill="#EFAD71"/>
-            <path id="Vector 9" d="M477 151.5L293 69L390 20L574 95.5L477 151.5Z" fill="#F0B074"/>
-            <path id="Vector 10" d="M293 69L98 145.5L4.5 80L207 0.5L293 69Z" fill="#E4A46B"/>
-            </g>
+        <svg id="box" width="515" height="639" viewBox="0 0 515 639" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="floor" d="M2 519L288 639L514.5 543.5L227.697 399.914L2 519Z" fill="#FF755C"/>
+            <path id="sidewall" d="M2 246L227.697 147V400L2 519V246Z" fill="#FF9356"/>
+            <path id="backwall" d="M514 543.5V272L227.697 147L227.697 400.681L514 543.5Z" fill="#FF4181"/>
+            <path id="frontwall" d="M2 519V246L288 366.5L288.303 639L2 519Z" fill="#FFB14E"/>
+            <path id="lid" d="M0 246L227.5 147L514 272L288 366.5L0 246Z" fill="#FFA129"/>
+            <path id="slider" d="M288 94.5L288.303 367.196L514 272.5V0L288 94.5Z" fill="#FFCE47"/>
+            <path id="label" d="M28.0001 386.075L28 316.5L248.5 412L248.803 481.075L28.0001 386.075Z" fill="white"/>
+            <text id="animal" transform="translate(74.8406 283.844) rotate(21.1415)" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em"><tspan x="59.8" y="95.4603">animal</tspan></text>
         </svg>
-        <div id="name"></div>     
-        <div id="value"></div>   
     </div>
 </body>
 </html>
