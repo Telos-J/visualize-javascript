@@ -20,6 +20,7 @@ class ExpressionStatement {
 export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
+    console.log(syntax)
     variableDeclarations = {}, expressionStatements = []
 
     for (let node of syntax.body) {

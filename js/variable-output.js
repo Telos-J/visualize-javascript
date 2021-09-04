@@ -31,9 +31,25 @@ function writeOutput(script) {
 function outputConsole() {
     for (const name in variableDeclarations) {
         console.log(variableDeclarations[name])
-        output.querySelector('#name').innerHTML = variableDeclarations[name].name
-        output.querySelector('#value').innerHTML = variableDeclarations[name].value
+        output.querySelector('#label text tspan').innerHTML = variableDeclarations[name].name
+        output.querySelector('#data text tspan').innerHTML = variableDeclarations[name].value
     }
+    insertData()
+}
+
+function insertData() {
+    const box = output.querySelector('#box')
+    const data = output.querySelector('#data')
+    gsap.set(data, {x: 0})
+    box.classList.remove('closed')
+
+    gsap.to(data, {
+        delay: 1,
+        transform: 'translateX(-60%)', 
+        onComplete: () => {
+            box.classList.add('closed')
+        }
+    })
 }
 
 addEventListener('load', () => {

@@ -11,12 +11,25 @@
             height: 100vh;
             overflow: hidden;
         }
-            #container {
-                bottom: 0;
-                position: absolute;
-                width: 100vw;
-                justify-content: center;
-                display: flex;
+
+        #container {
+            bottom: 0;
+            position: absolute;
+            width: 100vw;
+            justify-content: center;
+            display: flex;
+        }
+
+        #box {
+            width: 50vw;
+        }
+
+        #box #slider {
+            transition: transform 1s;
+        }
+
+        #box.closed #slider {
+            transform: translateY(42.5%)
         }
             #box {
                 width: 50vw;
@@ -29,21 +42,22 @@
                 transform: translateY(42.5%)
         }
         
-            #name {
-                position: absolute;
-                bottom: 2rem;
+        #name {
+            position: absolute;
+            bottom: 2rem;
 
         }
 
-            #value {
-                position: absolute;
-                bottom: 15rem;
+        #value {
+            position: absolute;
+            bottom: 15rem;
         }
 
     </style>
 </head>
 <body>
     <div id="container">
+<<<<<<< Updated upstream
         <svg id="box" width="515" height="639" viewBox="0 0 515 639" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path id="floor" d="M2 519L288 639L514.5 543.5L227.697 399.914L2 519Z" fill="#FF755C"/>
             <path id="sidewall" d="M2 246L227.697 147V400L2 519V246Z" fill="#FF9356"/>
@@ -53,6 +67,23 @@
             <path id="slider" d="M288 94.5L288.303 367.196L514 272.5V0L288 94.5Z" fill="#FFCE47"/>
             <path id="label" d="M28.0001 386.075L28 316.5L248.5 412L248.803 481.075L28.0001 386.075Z" fill="white"/>
             <text id="animal" transform="translate(74.8406 283.844) rotate(21.1415)" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em"><tspan x="59.8" y="95.4603">animal</tspan></text>
+=======
+        <svg id="box" width="920" height="639" viewBox="0 0 920 639" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="floor" d="M0 519L286 639L512 543.5L225.697 399.914L0 519Z" fill="#FF755C"/>
+        <path id="sidewall" d="M0 246L225.5 147L225.697 400L0 519V246Z" fill="#FF9356"/>
+        <path id="backwall" d="M512 543.5V272L225.5 147L225.697 400.681L512 543.5Z" fill="#FF4181"/>
+        <g id="data">
+        <rect x="675" y="410" width="245" height="90" fill="#1E1E1E"/>
+        <text fill="#CE9077" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="46" letter-spacing="0em"><tspan x="722.346" y="470.723">"rabbit"</tspan></text>
+        </g>
+        <path id="frontwall" d="M0 519V246L286 366.5V639L0 519Z" fill="#FFB14E"/>
+        <path id="lid" d="M0 246L225.5 147L512 272L286 366.5L0 246Z" fill="#FFA129"/>
+        <path id="slider" d="M286 94.5V367L512 272L512 0L286 94.5Z" fill="#FFCE47"/>
+        <g id="label">
+        <path d="M26.0001 386.075L26 316.5L246.5 412L246.803 481.075L26.0001 386.075Z" fill="white"/>
+        <text transform="translate(72.8406 283.844) rotate(21.1415)" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em"><tspan x="59.8" y="95.4603">animal</tspan></text>
+        </g>
+>>>>>>> Stashed changes
         </svg>
     </div>
 </body>
