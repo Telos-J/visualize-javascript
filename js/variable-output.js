@@ -30,7 +30,6 @@ function writeOutput(script) {
 
 function outputConsole() {
     for (const name in variableDeclarations) {
-        console.log(variableDeclarations[name])
         output.querySelector('#label text tspan').innerHTML = variableDeclarations[name].name
         output.querySelector('#data text tspan').innerHTML = variableDeclarations[name].value
     }
