@@ -1,4 +1,4 @@
-import { variableDeclarations } from './parse'
+import { variableDeclarations, expressionStatements, assignmentExpressions } from './parse'
 import { gsap } from 'gsap'
 let output
 
@@ -34,6 +34,19 @@ function outputConsole() {
         output.querySelector('#data text tspan').innerHTML = variableDeclarations[name].value
     }
     insertData()
+
+    for (const assignmentExpression of assignmentExpressions) {
+        if (output.querySelector('#label text tspan').innerHTML === assignmentExpression.name)
+        setTimeout(() => {
+            updateData(assignmentExpression.value)
+      }, 3000)
+   }
+   
+   for (const expressionStatement of expressionStatements) {
+    setTimeout(() => {
+        retrieveData()
+  }, 3000)
+}
 }
 
 function insertData() {
@@ -51,9 +64,36 @@ function insertData() {
     })
 }
 
+function retrieveData() {
+const box = output.querySelector('#box')
+const data = output.querySelector('#data')
+box.classList.remove('closed')
+
+gsap.to(data, {
+    delay: 1,
+    transform: 'translateX(0%)',
+    })
+}
+
+
+
+function updateData(value) {
+    const box = output.querySelector('#box')
+    const data = output.querySelector('#data')
+    box.classList.remove('closed')
+
+    gsap.to(data, {
+    delay: 1,
+    transform: 'translateX(0%)', 
+    onComplete: () => {
+        output.querySelector('#data text tspan').innerHTML = value
+        insertData()
+    }
+})
+}
+
 addEventListener('load', () => {
     output = document.querySelector('#output').contentWindow.document
 })
 
 export { outputConsole }
-
