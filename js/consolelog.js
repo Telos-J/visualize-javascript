@@ -8,9 +8,22 @@ const container = document.querySelector('#monaco-editor-container')
 const runButton = document.querySelector('#run-button')
 const prevButton = document.querySelector('#prev-button')
 const nextButton = document.querySelector('#next-button')
+
+monaco.editor.defineTheme('myTheme', {
+    base: 'vs-dark',
+    inherit: true,
+    rules: [{ background: '211e2f' }],
+    colors: {
+        'editor.foreground': '#211e2f',
+        'editor.background': '#211e2f',
+        'editorCursor.foreground': '#211e2f',
+    }
+});
+monaco.editor.setTheme('myTheme');
+
 const editor = monaco.editor.create(container, {
     language: 'javascript',
-    theme: 'vs-dark',
+    theme: 'myTheme',
     fontSize: '20px',
     scrollBeyondLastLine: false,
     showEvents: true,

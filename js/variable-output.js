@@ -46,29 +46,29 @@ function outputConsole() {
     insertData()
 
     for (const assignmentExpression of assignmentExpressions) {
-        if (output.querySelector('#label text tspan').innerHTML === assignmentExpression.name && 
-        variableDeclarations[assignmentExpression.name].type === 'let')
+        if (output.querySelector('#label text tspan').innerHTML === assignmentExpression.name &&
+            variableDeclarations[assignmentExpression.name].type === 'let')
+            setTimeout(() => {
+                updateData(assignmentExpression.value)
+            }, 3000)
+    }
+
+    for (const expressionStatement of expressionStatements) {
         setTimeout(() => {
-            updateData(assignmentExpression.value)
-      }, 3000)
-   }
-   
-   for (const expressionStatement of expressionStatements) {
-    setTimeout(() => {
-        retrieveData()
-  }, assignmentExpressions.length ? 8000 : 3000)
-}
+            retrieveData()
+        }, assignmentExpressions.length ? 8000 : 3000)
+    }
 }
 
 function insertData() {
     const box = output.querySelector('#box')
     const data = output.querySelector('#data')
-    gsap.set(data, {x: 0})
+    gsap.set(data, { x: 0 })
     box.classList.remove('closed')
 
     gsap.to(data, {
         delay: 1,
-        transform: 'translateX(-60%)', 
+        transform: 'translateX(-60%)',
         onComplete: () => {
             box.classList.add('closed')
         }
@@ -76,13 +76,13 @@ function insertData() {
 }
 
 function retrieveData() {
-const box = output.querySelector('#box')
-const data = output.querySelector('#data')
-box.classList.remove('closed')
+    const box = output.querySelector('#box')
+    const data = output.querySelector('#data')
+    box.classList.remove('closed')
 
-gsap.to(data, {
-    delay: 1,
-    transform: 'translateX(0%)',
+    gsap.to(data, {
+        delay: 1,
+        transform: 'translateX(0%)',
     })
 }
 
@@ -94,13 +94,13 @@ function updateData(value) {
     box.classList.remove('closed')
 
     gsap.to(data, {
-    delay: 1,
-    transform: 'translateX(0%)', 
-    onComplete: () => {
-        output.querySelector('#data text tspan').innerHTML = value
-        insertData()
-    }
-})
+        delay: 1,
+        transform: 'translateX(0%)',
+        onComplete: () => {
+            output.querySelector('#data text tspan').innerHTML = value
+            insertData()
+        }
+    })
 }
 
 addEventListener('load', () => {
