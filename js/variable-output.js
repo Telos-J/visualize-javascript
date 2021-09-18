@@ -46,7 +46,8 @@ function outputConsole() {
     insertData()
 
     for (const assignmentExpression of assignmentExpressions) {
-        if (output.querySelector('#label text tspan').innerHTML === assignmentExpression.name)
+        if (output.querySelector('#label text tspan').innerHTML === assignmentExpression.name && 
+        variableDeclarations[assignmentExpression.name].type === 'let')
         setTimeout(() => {
             updateData(assignmentExpression.value)
       }, 3000)
@@ -55,7 +56,7 @@ function outputConsole() {
    for (const expressionStatement of expressionStatements) {
     setTimeout(() => {
         retrieveData()
-  }, 3000)
+  }, assignmentExpressions.length ? 8000 : 3000)
 }
 }
 
