@@ -32,6 +32,16 @@ function outputConsole() {
     for (const name in variableDeclarations) {
         output.querySelector('#label text tspan').innerHTML = variableDeclarations[name].name
         output.querySelector('#data text tspan').innerHTML = variableDeclarations[name].value
+        if (variableDeclarations[name].type === 'const') {
+            output.querySelector('#slider').setAttribute('fill', '#FF8B84')
+            output.querySelector('#lid').setAttribute('fill', '#FF5247')
+            output.querySelector('#frontwall').setAttribute('fill', '#FF6A61')
+        }
+        else if (variableDeclarations[name].type === 'let') {
+            output.querySelector('#slider').setAttribute('fill', '#90FF7D')
+            output.querySelector('#lid').setAttribute('fill', '#0FEA4C')
+            output.querySelector('#frontwall').setAttribute('fill', '#75F55F')
+        }
     }
     insertData()
 
