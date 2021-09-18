@@ -23,7 +23,7 @@ monaco.editor.setTheme('myTheme');
 
 const editor = monaco.editor.create(container, {
     language: 'javascript',
-    theme: 'vs-dark',
+    theme: 'myTheme',
     fontSize: '20px',
     scrollBeyondLastLine: false,
     showEvents: true,
