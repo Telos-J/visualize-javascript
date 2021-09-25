@@ -14,9 +14,7 @@ monaco.editor.defineTheme('myTheme', {
     inherit: true,
     rules: [{ background: '211e2f' }],
     colors: {
-        'editor.foreground': '#211e2f',
         'editor.background': '#211e2f',
-        'editorCursor.foreground': '#211e2f',
     }
 });
 monaco.editor.setTheme('myTheme');
