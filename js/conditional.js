@@ -26,7 +26,8 @@ const editor = monaco.editor.create(container, {
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
-    value: `let animal = 'rabbit'`,
+    value: `if () {
+}`,
 });
 
 editor.onDidChangeModelContent((e) => {
@@ -44,5 +45,5 @@ function runContent() {
 }
 
 runButton.addEventListener('click', runContent)
-prevButton.addEventListener('click', () => location.href = '/')
-nextButton.addEventListener('click', () => location.href = '/conditional.html')
+prevButton.addEventListener('click', () => location.href = '/variable.html')
+

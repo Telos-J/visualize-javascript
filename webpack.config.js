@@ -6,7 +6,8 @@ const path = require('path')
 module.exports = {
     entry: {
         main: './js/consolelog.js',
-        variable: './js/variable.js'
+        variable: './js/variable.js',
+        conditional: './js/conditional.js'
     },
     output: {
         filename: 'main.[contenthash].js',
@@ -52,6 +53,11 @@ module.exports = {
             template: 'templates/variable.html',
             filename: 'variable.html',
             chunks: ['variable']
+        }),
+        new HtmlWebpackPlugin({
+            template: 'templates/conditional.html',
+            filename: 'conditional.html',
+            chunks: ['conditional']
         }),
     ],
     devServer: {
