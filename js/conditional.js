@@ -26,7 +26,13 @@ const editor = monaco.editor.create(container, {
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
-    value: `if () {
+    value: `const currentTime = 8
+const wakeupTime = 9
+
+if (currentTime > wakeupTime) {
+    console.log('Time to wake up!')
+} else {
+    console.log('I can sleep more :)')
 }`,
 });
 
