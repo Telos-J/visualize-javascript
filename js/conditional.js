@@ -1,7 +1,7 @@
 import '../css/style.scss'
 import * as monaco from 'monaco-editor'
 import { parseScript } from './parse'
-import { outputConsole } from './variable-output'
+import { outputConsole } from './conditional-output'
 import './plugins.js'
 
 const container = document.querySelector('#monaco-editor-container')
