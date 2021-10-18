@@ -1,5 +1,5 @@
 import * as esprima from 'esprima'
-let variableDeclarations = {}, expressionStatements = [], assignmentExpressions = []
+let variableDeclarations = {}, expressionStatements = [], assignmentExpressions = [], ifStatements = []
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -83,12 +83,17 @@ function processDeclarations(node) {
 }
 
 function processIfStatement(node) {
-    const test = `${node.test.left.name} ${node.test.operator} ${node.test.right.name}`
-    const consequent = node.consequent
-    const alternate = node.alternate
-    const ifStatement = new IfStatement(test, consequent, alternate)
+    deconstructSyntax(node.consequent)
+    deconstructSyntax(node.alternate)
+
+    const leftValue = variableDeclarations[node.test.left.name].value
+    const rightValue = variableDeclarations[node.test.right.name].value
+    const test = leftValue > rightValue 
+    
+    const ifStatement = new IfStatement(test)
+    ifStatements.push(ifStatement)
     console.table(ifStatement)
-}
+    }
 
 
-export { variableDeclarations, expressionStatements, assignmentExpressions }
+export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements }
