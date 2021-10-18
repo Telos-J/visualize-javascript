@@ -25,11 +25,10 @@ class AssignmentExpression {
 }
 
 class IfStatement {
-    constructor(test, consequent, alternate){
+    constructor(test, consequent, alternate) {
         this.test = test
         this.consequent = consequent
         this.alternate = alternate
-
     }
 }
 
@@ -39,41 +38,57 @@ export function parseScript(script) {
     let syntax = esprima.parseScript(script, { loc: true, range: true })
     console.log(syntax)
     variableDeclarations = {}, expressionStatements = [], assignmentExpressions = []
+    deconstructSyntax(syntax)
+}
 
+function deconstructSyntax(syntax) {
     for (let node of syntax.body) {
         if (node.type === 'ExpressionStatement') {
-            if (node.expression.type === 'CallExpression') {
-                const callee = node.expression.callee
-                const argument = node.expression.arguments[0]
-                const expressionStatement = new ExpressionStatement(callee.object.name, callee.property.name)
-    
-                if (argument.type === 'Literal')
-                    expressionStatement.value = argument.value
-                else if (argument.type === 'Identifier')
-                    expressionStatement.value = variableDeclarations[argument.name].value
-    
-                expressionStatements.push(expressionStatement)
-                console.table(expressionStatement)
-            }else if (node.expression.type === 'AssignmentExpression') {
-                const assignmentExpression = new AssignmentExpression(node.expression.left.name, node.expression.right.value)
-                assignmentExpressions.push(assignmentExpression)
-                console.table(assignmentExpression)
-            }
-        }
-        else if (node.type === 'VariableDeclaration') {
-            for (let declaration of node.declarations) {
-                const variableDeclaration = new VariableDeclaration(node.kind, declaration.id.name, declaration.init.value)
-                variableDeclarations[variableDeclaration.name] = variableDeclaration
-                console.table(variableDeclaration)
-            }
+            processExpression(node.expression)
+        } else if (node.type === 'VariableDeclaration') {
+            processDeclarations(node)
         } else if (node.type === 'IfStatement') {
-            const test = `${node.test.left.name} ${node.test.operator} ${node.test.right.name}`
-            const consequent = node.consequent
-            const alternate = node.alternate
-            const ifStatement = new IfStatement(test, consequent, alternate)
-            console.table(ifStatement)
+            processIfStatement(node)
         } 
     }
 }
+
+function processExpression(expression) {
+    if (expression.type === 'CallExpression') {
+        const callee = expression.callee
+        const argument = expression.arguments[0]
+        const expressionStatement = new ExpressionStatement(callee.object.name, callee.property.name)
+
+        if (argument.type === 'Literal')
+            expressionStatement.value = argument.value
+        else if (argument.type === 'Identifier')
+            expressionStatement.value = variableDeclarations[argument.name].value
+
+        expressionStatements.push(expressionStatement)
+        console.table(expressionStatement)
+    } else if (expression.type === 'AssignmentExpression') {
+        const assignmentExpression = new AssignmentExpression(expression.left.name, expression.right.value)
+        assignmentExpressions.push(assignmentExpression)
+        console.table(assignmentExpression)
+    }
+}
+    
+
+function processDeclarations(node) {
+    for (let declaration of node.declarations) {
+        const variableDeclaration = new VariableDeclaration(node.kind, declaration.id.name, declaration.init.value)
+        variableDeclarations[variableDeclaration.name] = variableDeclaration
+        console.table(variableDeclaration)
+    }
+}
+
+function processIfStatement(node) {
+    const test = `${node.test.left.name} ${node.test.operator} ${node.test.right.name}`
+    const consequent = node.consequent
+    const alternate = node.alternate
+    const ifStatement = new IfStatement(test, consequent, alternate)
+    console.table(ifStatement)
+}
+
 
 export { variableDeclarations, expressionStatements, assignmentExpressions }
