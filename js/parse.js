@@ -24,6 +24,15 @@ class AssignmentExpression {
     }
 }
 
+class IfStatement {
+    constructor(test, consequent, alternate){
+        this.test = test
+        this.consequent = consequent
+        this.alternate = alternate
+
+    }
+}
+
 
 export function parseScript(script) {
     console.clear()
@@ -57,7 +66,13 @@ export function parseScript(script) {
                 variableDeclarations[variableDeclaration.name] = variableDeclaration
                 console.table(variableDeclaration)
             }
-        }
+        } else if (node.type === 'IfStatement') {
+            const test = `${node.test.left.name} ${node.test.operater} ${node.test.right.name}`
+            const consequent = node.consequent
+            const alternate = node.alternate
+            const ifStatement = new IfStatement(test, consequent, alternate)
+            console.table(ifStatement)
+        } 
     }
 }
 
