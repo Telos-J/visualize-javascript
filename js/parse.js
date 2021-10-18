@@ -67,7 +67,7 @@ export function parseScript(script) {
                 console.table(variableDeclaration)
             }
         } else if (node.type === 'IfStatement') {
-            const test = `${node.test.left.name} ${node.test.operater} ${node.test.right.name}`
+            const test = `${node.test.left.name} ${node.test.operator} ${node.test.right.name}`
             const consequent = node.consequent
             const alternate = node.alternate
             const ifStatement = new IfStatement(test, consequent, alternate)
