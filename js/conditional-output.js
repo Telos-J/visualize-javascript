@@ -12,11 +12,11 @@ function outputConsole() {
     const leftEye = output.querySelector('#left-eye')
     const rightEye = output.querySelector('#right-eye')
 
-    gsap.to(student, {y: 60})
-    gsap.to(leftArm, {rotate: 90, transformOrigin: 'bottom left'})
-    gsap.to(rightArm, {rotate: -90, transformOrigin: 'bottom right'})
-    gsap.to(rightEye, {morphSVG: "M178 118.5C178 121 178 121 171.5 121C165 121 165 121 165 118.5C165 116 165 116 171.5 116C178 116 178 116 178 118.5Z"})
-    gsap.to(leftEye, {morphSVG: "M217 118.5C217 121 217 121 210.5 121C204 121 204 121 204 118.5C204 116 204 116 210.5 116C217 116 217 116 217 118.5Z"})
+    gsap.to(student, {y: -55})
+    gsap.to(leftArm, {rotate: -80, transformOrigin: 'top left'})
+    gsap.to(rightArm, {rotate: 80, transformOrigin: 'top right'})
+    gsap.to(rightEye, {morphSVG: "M178.5 176.5C178.5 180.09 175.59 183 172 183C168.41 183 165.5 180.09 165.5 176.5C165.5 172.91 168.41 170 172 170C175.59 170 178.5 172.91 178.5 176.5Z"})
+    gsap.to(leftEye, {morphSVG: "M217.5 176.5C217.5 180.09 214.59 183 211 183C207.41 183 204.5 180.09 204.5 176.5C204.5 172.91 207.41 170 211 170C214.59 170 217.5 172.91 217.5 176.5Z"})
 }
 
 addEventListener('load', () => {
