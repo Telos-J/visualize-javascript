@@ -25,10 +25,27 @@ class AssignmentExpression {
 }
 
 class IfStatement {
-    constructor(test, consequent, alternate) {
-        this.test = test
+    constructor(leftValue, rightValue, operator, consequent, alternate) {
+        this.leftValue = leftValue
+        this.rightValue = rightValue
+        this.operator = operator
         this.consequent = consequent
         this.alternate = alternate
+    }
+
+    test() {
+        if (this.operator === '<')
+            return this.leftValue < this.rightValue
+        else if (this.operator === '>')
+            return this.leftValue > this.rightValue
+        else if (this.operator === '<=')
+            return this.leftValue <= this.rightValue
+        else if (this.operator === '>=')
+            return this.leftValue >= this.rightValue
+        else if (this.operator === '===')
+            return this.leftValue === this.rightValue
+        else if (this.operator === '!==')
+            return this.leftValue !== this.rightValue
     }
 }
 
@@ -49,7 +66,7 @@ function deconstructSyntax(syntax) {
             processDeclarations(node)
         } else if (node.type === 'IfStatement') {
             processIfStatement(node)
-        } 
+        }
     }
 }
 
@@ -72,7 +89,7 @@ function processExpression(expression) {
         console.table(assignmentExpression)
     }
 }
-    
+
 
 function processDeclarations(node) {
     for (let declaration of node.declarations) {
@@ -86,14 +103,24 @@ function processIfStatement(node) {
     deconstructSyntax(node.consequent)
     deconstructSyntax(node.alternate)
 
-    const leftValue = variableDeclarations[node.test.left.name].value
-    const rightValue = variableDeclarations[node.test.right.name].value
-    const test = leftValue > rightValue 
-    
-    const ifStatement = new IfStatement(test)
+    let leftValue, rightValue
+
+    if (node.test.left.type === 'Identifier')
+        leftValue = variableDeclarations[node.test.left.name].value
+    else if (node.test.left.type === 'Literal')
+        leftValue = node.test.left.value
+
+    if (node.test.right.type === 'Identifier')
+        rightValue = variableDeclarations[node.test.right.name].value
+    else if (node.test.right.type === 'Literal')
+        rightValue = node.test.right.value
+
+    const operator = node.test.operator
+
+    const ifStatement = new IfStatement(leftValue, rightValue, operator)
     ifStatements.push(ifStatement)
     console.table(ifStatement)
-    }
+}
 
 
 export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements }
