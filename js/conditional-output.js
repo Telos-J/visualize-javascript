@@ -23,8 +23,15 @@ function outputConsole() {
     }
 }
 
+function animateZ() {
+    const zs = output.querySelectorAll('.z')
+    
+    gsap.to(zs, {scale: 1.3, repeat: -1, yoyo: true, stagger: 0.1, transformOrigin: 'center'})
+}
+
 addEventListener('load', () => {
     output = document.querySelector('#output').contentWindow.document
+    animateZ()
 })
 
 export {outputConsole}
