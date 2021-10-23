@@ -6,13 +6,9 @@ let output;
 gsap.registerPlugin(MorphSVGPlugin)
 
 function outputConsole() {
+    updateClock()
+
     for (const ifStatement of ifStatements) {
-        const minuteHand = output.querySelector('#minute-hand')
-        const hourHand = output.querySelector('#hour-hand')
-
-        gsap.to(minuteHand, { rotate: 360 * ifStatement.leftValue, transformOrigin: 'bottom' })
-        gsap.to(hourHand, { rotate: 30 * ifStatement.leftValue, transformOrigin: 'bottom' })
-
         if (ifStatement.test()) {
             const student = output.querySelector('#student')
             const leftArm = output.querySelector('#left-arm')
@@ -31,6 +27,15 @@ function outputConsole() {
             gsap.to(leftEye, { morphSVG: "M217.5 176.5C217.5 180.09 214.59 183 211 183C207.41 183 204.5 180.09 204.5 176.5C204.5 172.91 207.41 170 211 170C214.59 170 217.5 172.91 217.5 176.5Z" })
         }
     }
+}
+
+function updateClock() {
+    const minuteHand = output.querySelector('#minute-hand')
+    const hourHand = output.querySelector('#hour-hand')
+    const currentTime = variableDeclarations['currentTime'].value
+
+    gsap.to(minuteHand, { rotate: 360 * currentTime, transformOrigin: 'bottom' })
+    gsap.to(hourHand, { rotate: 30 * currentTime, transformOrigin: 'bottom' })
 }
 
 function animateZ() {

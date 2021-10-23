@@ -103,23 +103,20 @@ function processIfStatement(node) {
     deconstructSyntax(node.consequent)
     deconstructSyntax(node.alternate)
 
-    let leftValue, rightValue
-
-    if (node.test.left.type === 'Identifier')
-        leftValue = variableDeclarations[node.test.left.name].value
-    else if (node.test.left.type === 'Literal')
-        leftValue = node.test.left.value
-
-    if (node.test.right.type === 'Identifier')
-        rightValue = variableDeclarations[node.test.right.name].value
-    else if (node.test.right.type === 'Literal')
-        rightValue = node.test.right.value
-
+    const leftValue = getValue(node.test.left)
+    const rightValue = getValue(node.test.right)
     const operator = node.test.operator
 
     const ifStatement = new IfStatement(leftValue, rightValue, operator)
     ifStatements.push(ifStatement)
     console.table(ifStatement)
+}
+
+function getValue(node) {
+    if (node.type === 'Identifier')
+        return variableDeclarations[node.name].value
+    else if (node.type === 'Literal')
+        return node.value
 }
 
 
