@@ -13,7 +13,11 @@ function outputConsole() {
             const rightArm = output.querySelector('#right-arm')
             const leftEye = output.querySelector('#left-eye')
             const rightEye = output.querySelector('#right-eye')
-
+            const zs = output.querySelectorAll('.z')
+            
+            gsap.killTweensOf(student)
+            gsap.killTweensOf(zs)
+            gsap.set(zs, { display: 'none' })
             gsap.to(student, {y: -55})
             gsap.to(leftArm, {rotate: -80, transformOrigin: 'top left'})
             gsap.to(rightArm, {rotate: 80, transformOrigin: 'top right'})
@@ -25,8 +29,10 @@ function outputConsole() {
 
 function animateZ() {
     const zs = output.querySelectorAll('.z')
+    const student = output.querySelector('#student')
     
     gsap.to(zs, {scale: 1.3, repeat: -1, yoyo: true, stagger: 0.1, transformOrigin: 'center'})
+    gsap.to(student, { y: 4, repeat: -1, yoyo: true, duration: 1 })
 }
 
 addEventListener('load', () => {
