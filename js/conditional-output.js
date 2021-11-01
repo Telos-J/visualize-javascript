@@ -15,7 +15,13 @@ function outputConsole() {
         else {
             sleep()
         }
+        showMessage(ifStatement)
     }
+}
+
+function showMessage(ifStatement) {
+    const message = output.querySelector('#message')
+    message.innerHTML = ifStatement.test() ? ifStatement.consequent : ifStatement.alternate
 }
 
 function wakeUp() {

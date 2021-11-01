@@ -61,7 +61,7 @@ export function parseScript(script) {
 function deconstructSyntax(syntax) {
     for (let node of syntax.body) {
         if (node.type === 'ExpressionStatement') {
-            processExpression(node.expression)
+            return processExpression(node.expression)
         } else if (node.type === 'VariableDeclaration') {
             processDeclarations(node)
         } else if (node.type === 'IfStatement') {
@@ -83,10 +83,12 @@ function processExpression(expression) {
 
         expressionStatements.push(expressionStatement)
         console.table(expressionStatement)
+        return expressionStatement
     } else if (expression.type === 'AssignmentExpression') {
         const assignmentExpression = new AssignmentExpression(expression.left.name, expression.right.value)
         assignmentExpressions.push(assignmentExpression)
         console.table(assignmentExpression)
+        return assignmentExpression
     }
 }
 
@@ -100,14 +102,14 @@ function processDeclarations(node) {
 }
 
 function processIfStatement(node) {
-    deconstructSyntax(node.consequent)
-    deconstructSyntax(node.alternate)
 
     const leftValue = getValue(node.test.left)
     const rightValue = getValue(node.test.right)
     const operator = node.test.operator
+    const consequent = deconstructSyntax(node.consequent).value
+    const alternate = deconstructSyntax(node.alternate).value
 
-    const ifStatement = new IfStatement(leftValue, rightValue, operator)
+    const ifStatement = new IfStatement(leftValue, rightValue, operator, consequent, alternate)
     ifStatements.push(ifStatement)
     console.table(ifStatement)
 }
