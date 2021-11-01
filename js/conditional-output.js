@@ -14,7 +14,6 @@ function outputConsole() {
         }
         else {
             sleep()
-            animateSleep()
         }
     }
 }
