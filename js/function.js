@@ -26,7 +26,13 @@ const editor = monaco.editor.create(container, {
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
-    value: ``,
+    value: `const fish = '🐟'
+
+function feedCat(food) {
+    console.log(\`Cat ate \${food}\`)
+    return '💩'
+}
+feedCat(fish)`,
 });
 
 editor.onDidChangeModelContent((e) => {
