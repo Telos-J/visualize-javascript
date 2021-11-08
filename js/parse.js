@@ -54,7 +54,7 @@ export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
     console.log(syntax)
-    variableDeclarations = {}, expressionStatements = [], assignmentExpressions = []
+    variableDeclarations = {}, expressionStatements = [], assignmentExpressions = [], ifStatements = []
     deconstructSyntax(syntax)
 }
 

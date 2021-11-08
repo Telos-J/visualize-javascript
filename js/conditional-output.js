@@ -33,7 +33,6 @@ function wakeUp() {
     const zs = output.querySelectorAll('.z')
 
     gsap.killTweensOf(student)
-    gsap.killTweensOf(zs)
     gsap.set(zs, { display: 'none' })
     gsap.to(student, { y: -55 })
     gsap.to(leftArm, { rotate: -80, transformOrigin: 'top left' })
@@ -50,10 +49,14 @@ function sleep() {
     const rightEye = output.querySelector('#right-eye')
     const zs = output.querySelectorAll('.z')
 
-    gsap.killTweensOf(student)
-    gsap.killTweensOf(zs)
     gsap.set(zs, { display: 'inherit' })
-    gsap.to(student, { y: 0 })
+    if (!gsap.isTweening(student)) {
+        gsap.to(student, {
+            y: 0, onComplete: () => {
+                gsap.to(student, { y: '+=4', repeat: -1, yoyo: true, duration: 1 })
+            }
+        })
+    }
     gsap.to(leftArm, { rotate: 0, transformOrigin: 'top left' })
     gsap.to(rightArm, { rotate: 0, transformOrigin: 'top right' })
     gsap.to(rightEye, { morphSVG: "M178 176.5C178 179 178 179 171.5 179C165 179 165 179 165 176.5C165 174 165 174 171.5 174C178 174 178 174 178 176.5Z" })
@@ -74,7 +77,7 @@ function animateSleep() {
     const student = output.querySelector('#student')
 
     gsap.to(zs, { scale: 1.3, repeat: -1, yoyo: true, stagger: 0.1, transformOrigin: 'center' })
-    gsap.to(student, { y: 4, repeat: -1, yoyo: true, duration: 1 })
+    gsap.to(student, { y: '+=4', repeat: -1, yoyo: true, duration: 1 })
 }
 
 addEventListener('load', () => {
