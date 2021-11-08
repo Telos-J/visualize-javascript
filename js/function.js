@@ -1,7 +1,7 @@
 import '../css/style.scss'
 import * as monaco from 'monaco-editor'
 import { parseScript } from './parse'
-import { outputConsole } from './conditional-output'
+import { outputConsole } from './function-output'
 import './plugins.js'
 
 const container = document.querySelector('#monaco-editor-container')
@@ -26,14 +26,7 @@ const editor = monaco.editor.create(container, {
     scrollBeyondLastLine: false,
     showEvents: true,
     automaticLayout: true,
-    value: `const currentTime = 8
-const wakeupTime = 9
-
-if (currentTime > wakeupTime) {
-    console.log('Time to wake up!')
-} else {
-    console.log('I can sleep more :)')
-}`,
+    value: ``,
 });
 
 editor.onDidChangeModelContent((e) => {
@@ -51,5 +44,5 @@ function runContent() {
 }
 
 runButton.addEventListener('click', runContent)
-prevButton.addEventListener('click', () => location.href = '/variable.html')
-nextButton.addEventListener('click', () => location.href = '/function.html')
+prevButton.addEventListener('click', () => location.href = '/conditional.html')
+

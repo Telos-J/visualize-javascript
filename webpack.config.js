@@ -7,7 +7,8 @@ module.exports = {
     entry: {
         main: './js/consolelog.js',
         variable: './js/variable.js',
-        conditional: './js/conditional.js'
+        conditional: './js/conditional.js',
+        functions: './js/function.js'
     },
     output: {
         filename: 'main.[contenthash].js',
@@ -58,6 +59,11 @@ module.exports = {
             template: 'templates/conditional.html',
             filename: 'conditional.html',
             chunks: ['conditional']
+        }),
+        new HtmlWebpackPlugin({
+            template: 'templates/function.html',
+            filename: 'function.html',
+            chunks: ['functions']
         }),
     ],
     devServer: {
