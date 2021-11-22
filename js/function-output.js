@@ -6,6 +6,9 @@ let output;
 gsap.registerPlugin(MorphSVGPlugin)
 
 function outputConsole() {
+    const fish = output.querySelector('#fish')
+    gsap.set(fish, { display: 'block '})
+    gsap.from(fish, { x: -500 })
 }
 
 addEventListener('load', () => {
