@@ -7,9 +7,12 @@ gsap.registerPlugin(MotionPathPlugin)
 
 function outputConsole() {
     updateFood();
-    tossFish();
-    setTimeout(lookAtFish, 500);
-    setTimeout(catchFish, 1000);
+    console.log(expressionStatements);
+    if (expressionStatements.find((e) => e.property === 'feedCat')) {
+        tossFish();
+        setTimeout(lookAtFish, 500);
+        setTimeout(catchFish, 1000);
+    }
 }
 
 function updateFood() {
@@ -40,11 +43,18 @@ function catchFish() {
     const frontLegs = cat.querySelector('#front-legs');
     const backLegs = cat.querySelector('#back-legs');
 
-    gsap.to(head, { rotate: -61.3, x: "-10%" , y: "28%" , transformOrigin: "60% 100%" });
-    gsap.to(body, { rotate: -17.4, x: "-7.5%", y: "17%", transformOrigin: "center" });
-    gsap.to(tail, { rotate: -16.45, x: "-41%", transformOrigin: "0% 100%"});
-    gsap.to(frontLegs, { rotate: 58.38, x: "5%", y: "27%", transformOrigin: "top"});
-    gsap.to(backLegs, {rotate: -8.78, x: "-13%", transformOrigin: "top"});
+    const tl = gsap.timeline()
+    tl.to(head, { rotate: -61.3, x: "-10%" , y: "28%" , transformOrigin: "60% 100%", onComplete() {
+        gsap.to(head, {rotate: "+=6", repeat: 5, yoyo: true, duration: 0.2, onComplete(){
+            const fish = output.querySelector("#fish");
+            gsap.set(fish, { display: "none" });
+            tl.reverse();
+        }});
+    } },0);
+    tl.to(body, { rotate: -17.4, x: "-7.5%", y: "17%", transformOrigin: "center" },0);
+    tl.to(tail, { rotate: -16.45, x: "-41%", transformOrigin: "0% 100%"},0);
+    tl.to(frontLegs, { rotate: 58.38, x: "5%", y: "27%", transformOrigin: "top"},0);
+    tl.to(backLegs, {rotate: -8.78, x: "-13%", transformOrigin: "top"},0);
 }
 
 
