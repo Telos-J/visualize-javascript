@@ -2,21 +2,15 @@
 @import 'normalize';
 // @import 'monaco-colors';
 
-
-html {
-    width: 100vw;
-    height: 100vh;
-}
-
-body {
+.App {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
     grid-template-areas:
         'editor output'
         'description output';
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -52,8 +46,8 @@ body {
             background-color: #3794ff;
             font-family: 'Monaco';
             color: white;
-            transition: all .1s ease-in-out;
-            
+            transition: all 0.1s ease-in-out;
+
             &:active {
                 background-color: #295f8c;
             }
@@ -71,7 +65,7 @@ body {
     font-family: roboto;
     color: white;
     padding: 3rem;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
 
 #output {
