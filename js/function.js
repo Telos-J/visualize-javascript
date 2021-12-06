@@ -42,7 +42,7 @@ function runContent() {
     let script = editor.getValue()
 
     try {
-        //parseScript(script)
+        parseScript(script)
         outputConsole()
     } catch (e) {
         console.error('ParsingError', e)

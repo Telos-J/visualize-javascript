@@ -6,9 +6,15 @@ let output;
 gsap.registerPlugin(MotionPathPlugin)
 
 function outputConsole() {
-    tossFish()
+    updateFood();
+    tossFish();
     setTimeout(lookAtFish, 500);
     setTimeout(catchFish, 1000);
+}
+
+function updateFood() {
+    const fish = variableDeclarations['fish'];
+    output.querySelector("#fish").innerHTML = fish.value;
 }
 
 function tossFish() {
