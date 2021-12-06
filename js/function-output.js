@@ -16,7 +16,7 @@ function tossFish() {
     const path = output.querySelector('#path');
 
     gsap.set(fish, { display: 'block '});
-    gsap.from(fish, {ease: "power1.in", motionPath: { path, align: path, alignOrigin: [0,1], start: 1, end: 0 } });
+    gsap.from(fish, {ease: "power1.in", motionPath: { path, align: path, alignOrigin: [0.5,1], start: 1, end: 0 } });
 }
 
 function lookAtFish() {
