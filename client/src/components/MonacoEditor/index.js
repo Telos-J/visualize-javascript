@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Editor, { useMonaco } from '@monaco-editor/react'
 import setTheme, { codecademyTheme } from './themes'
-import { snippets } from './codeSnippets'
+import { editorValues } from '../../appData'
+import Context from '../../context'
 
-function MonacoEditor() {
+function MonacoEditor({ value, setValue }) {
+    const monaco = useMonaco()
+    const [chapter, setChapter] = useContext(Context)
     const [options, setOptions] = useState({
         fontSize: '20px',
         scrollBeyondLastLine: false,
@@ -15,15 +18,29 @@ function MonacoEditor() {
         },
     })
 
-    const [defaultValue, setDefaultValue] = useState(snippets[0])
-
-    const monaco = useMonaco()
+    const handleEditorChange = newValue => {
+        setValue(prev => newValue)
+    }
 
     useEffect(() => {
         if (monaco) setTheme(monaco, codecademyTheme)
     }, [monaco])
 
-    return <Editor defaultLanguage="javascript" defaultValue={defaultValue} options={options} />
+    useEffect(() => {
+        setValue(editorValues[chapter - 1])
+    }, [chapter])
+
+    return (
+        <div id="monaco-editor-container">
+            <Editor
+                defaultLanguage="javascript"
+                value={value}
+                options={options}
+                theme={codecademyTheme.name}
+                onChange={handleEditorChange}
+            />
+        </div>
+    )
 }
 
 export default MonacoEditor

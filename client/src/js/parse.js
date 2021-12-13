@@ -1,19 +1,23 @@
 import * as esprima from 'esprima'
-let variableDeclarations = {}, expressionStatements = [], assignmentExpressions = [], ifStatements = []
+
+let variableDeclarations = {},
+    expressionStatements = [],
+    assignmentExpressions = [],
+    ifStatements = []
 
 class VariableDeclaration {
     constructor(type, name, value) {
-        this.type = type;
-        this.name = name;
-        this.value = value;
+        this.type = type
+        this.name = name
+        this.value = value
     }
 }
 
 class ExpressionStatement {
     constructor(object, property, value) {
-        this.object = object;
-        this.property = property;
-        this.value = value;
+        this.object = object
+        this.property = property
+        this.value = value
     }
 }
 
@@ -34,27 +38,27 @@ class IfStatement {
     }
 
     test() {
-        if (this.operator === '<')
-            return this.leftValue < this.rightValue
-        else if (this.operator === '>')
-            return this.leftValue > this.rightValue
-        else if (this.operator === '<=')
-            return this.leftValue <= this.rightValue
-        else if (this.operator === '>=')
-            return this.leftValue >= this.rightValue
-        else if (this.operator === '===')
-            return this.leftValue === this.rightValue
-        else if (this.operator === '!==')
-            return this.leftValue !== this.rightValue
+        if (this.operator === '<') return this.leftValue < this.rightValue
+        else if (this.operator === '>') return this.leftValue > this.rightValue
+        else if (this.operator === '<=') return this.leftValue <= this.rightValue
+        else if (this.operator === '>=') return this.leftValue >= this.rightValue
+        else if (this.operator === '===') return this.leftValue === this.rightValue
+        else if (this.operator === '!==') return this.leftValue !== this.rightValue
     }
 }
 
+function reset() {
+    variableDeclarations = {}
+    expressionStatements = []
+    assignmentExpressions = []
+    ifStatements = []
+}
 
-export function parseScript(script) {
+function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
     console.log(syntax)
-    variableDeclarations = {}, expressionStatements = [], assignmentExpressions = [], ifStatements = []
+    reset()
     deconstructSyntax(syntax)
 }
 
@@ -74,10 +78,12 @@ function processExpression(expression) {
     if (expression.type === 'CallExpression') {
         const callee = expression.callee
         const argument = expression.arguments[0]
-        const expressionStatement = new ExpressionStatement(callee.object.name, callee.property.name)
+        const expressionStatement = new ExpressionStatement(
+            callee.object.name,
+            callee.property.name
+        )
 
-        if (argument.type === 'Literal')
-            expressionStatement.value = argument.value
+        if (argument.type === 'Literal') expressionStatement.value = argument.value
         else if (argument.type === 'Identifier')
             expressionStatement.value = variableDeclarations[argument.name].value
 
@@ -85,24 +91,29 @@ function processExpression(expression) {
         console.table(expressionStatement)
         return expressionStatement
     } else if (expression.type === 'AssignmentExpression') {
-        const assignmentExpression = new AssignmentExpression(expression.left.name, expression.right.value)
+        const assignmentExpression = new AssignmentExpression(
+            expression.left.name,
+            expression.right.value
+        )
         assignmentExpressions.push(assignmentExpression)
         console.table(assignmentExpression)
         return assignmentExpression
     }
 }
 
-
 function processDeclarations(node) {
     for (let declaration of node.declarations) {
-        const variableDeclaration = new VariableDeclaration(node.kind, declaration.id.name, declaration.init.value)
+        const variableDeclaration = new VariableDeclaration(
+            node.kind,
+            declaration.id.name,
+            declaration.init.value
+        )
         variableDeclarations[variableDeclaration.name] = variableDeclaration
         console.table(variableDeclaration)
     }
 }
 
 function processIfStatement(node) {
-
     const leftValue = getValue(node.test.left)
     const rightValue = getValue(node.test.right)
     const operator = node.test.operator
@@ -115,11 +126,14 @@ function processIfStatement(node) {
 }
 
 function getValue(node) {
-    if (node.type === 'Identifier')
-        return variableDeclarations[node.name].value
-    else if (node.type === 'Literal')
-        return node.value
+    if (node.type === 'Identifier') return variableDeclarations[node.name].value
+    else if (node.type === 'Literal') return node.value
 }
 
-
-export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements }
+export {
+    parseScript,
+    variableDeclarations,
+    expressionStatements,
+    assignmentExpressions,
+    ifStatements,
+}
