@@ -17,6 +17,8 @@ function outputConsole() {
         tossFish();
         setTimeout(lookAtFish, 500);
         setTimeout(catchFish, 1000);
+        setTimeout(poop, 4000);
+        setTimeout(vanishPoop, 5000);
     }
 }
 
@@ -40,6 +42,29 @@ function tossFish() {
             end: 0,
         },
     });
+}
+
+function poop() {
+    const poop = output.querySelector("#poop");
+    const poopPath = output.querySelector("#poop-path");
+
+    gsap.set(poop, { display: "block", opacity: 1});
+    gsap.from(poop, {
+        ease: "power1.in",
+        motionPath: {
+            path: poopPath,
+            align: poopPath,
+            alignOrigin: [0.5, 1],
+            start: 1,
+            end: 0,
+        },
+    });
+}
+
+function vanishPoop() {
+    const poop = output.querySelector("#poop");
+
+    gsap.to(poop, {display: "none", opacity: 0});
 }
 
 function lookAtFish() {
