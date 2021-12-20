@@ -10,7 +10,9 @@ function OutputSection() {
         setSource(`../templates/${templateSources[chapter - 1]}`)
     }, [chapter])
 
-    return <iframe id="output" title="output" src={source} />
+    return (
+            <iframe id="output" title="output" src={source} />
+    )
 }
 
 export default OutputSection

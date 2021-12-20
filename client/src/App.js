@@ -1,21 +1,21 @@
 import './css/style.scss'
 import { useState } from 'react'
-import EditorSection from './components/EditorSection'
-import DescriptionSection from './components/DescriptionSection'
-import OutputSection from './components/OutputSection'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Context from './context'
+import Chapter from './components/Chapter'
 
 function App() {
     const [chapter, setChapter] = useState(1)
 
     return (
-        <div className="App">
+        <Router>
             <Context.Provider value={[chapter, setChapter]}>
-                <EditorSection />
-                <DescriptionSection />
-                <OutputSection />
+                <Routes>
+                    <Route path="/" element={<Navigate replace to="/console-log" />} />
+                    <Route path="/:chapterName" element={<Chapter />} />
+                </Routes>
             </Context.Provider>
-        </div>
+        </Router>
     )
 }
 

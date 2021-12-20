@@ -1,16 +1,18 @@
 import { useContext } from 'react'
-import { templateSources } from '../appData'
+import { chapterNames } from '../appData'
 import Context from '../context'
+import { useNavigate } from 'react-router'
 
 function EditorFooter({ handleRunButtonClick }) {
     const [chapter, setChapter] = useContext(Context)
+    const navigate = useNavigate()
 
     const handlePrevButtonClick = () => {
-        if (chapter > 1) setChapter(prev => prev - 1)
+        if (chapterNames[chapter - 2]) navigate('/' + chapterNames[chapter - 2])
     }
 
     const handleNextButtonClick = () => {
-        if (chapter < templateSources.length) setChapter(prev => prev + 1)
+        if (chapterNames[chapter]) navigate('/' + chapterNames[chapter])
     }
 
     return (
