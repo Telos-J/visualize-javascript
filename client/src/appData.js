@@ -16,6 +16,7 @@ function feedCat(food) {
     return '💩'
 }
 feedCat(fish)`,
+    'const movies = []'
 ]
 
 const templateSources = [
@@ -23,9 +24,10 @@ const templateSources = [
     'variable-output.html',
     'conditional-output.html',
     'function-output.html',
+    'array-output.html'
 ]
 
-const chapterNames = ['console-log', 'variables', 'conditionals', 'functions']
+const chapterNames = ['console-log', 'variables', 'conditionals', 'functions', 'arrays']
 
 const descriptions = [
     <>
@@ -89,6 +91,9 @@ const descriptions = [
             that feeds the cat, and returns the poop. Line 7 will call the function that feeds the
             cat.
         </p>
+    </>,
+    <>
+        <h1>Chapter 5. Arrays</h1>
     </>,
 ]
 
