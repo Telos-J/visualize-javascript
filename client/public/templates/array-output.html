@@ -31,15 +31,31 @@
             top: 2rem;
         }
 
+        .movie {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .movie-frame {
+            position: absolute;
             width: 30%;
+            transform: translateY(2%) scale(1.06);
+        }
+
+        .movie-poster {
+            position: absolute;
+            width: 21%;
         }
     </style>
 </head>
 <body>
     <div id="container">
         <img id="cinema-image" src="../img/cinema.png" alt="cinema">
-        <img class="movie-frame" src="../img/movieFrame.png" alt="movie-frame">
+        <div class="movie">
+            <img class="movie-frame" src="../img/movieFrame.png" alt="movie-frame">
+            <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="movie-frame">
+        </div>
     </div>
 </body>
 </html>
