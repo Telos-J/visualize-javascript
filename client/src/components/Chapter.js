@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router'
 import Context from '../context'
 import { chapterNames } from '../appData'
+import { SEARCH_BASE_URL } from '../config'
 
 export default function Chapter() {
     const { chapterName } = useParams()
@@ -13,6 +14,13 @@ export default function Chapter() {
     useEffect(() => {
         setChapter(prev => chapterNames.indexOf(chapterName) + 1)
     }, [chapterName])
+
+    useEffect(async () => {
+        const searchTerm = 'spiderman no way home'
+        const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
+        const result = await (await fetch(endpoint)).json()
+        console.log(result)
+    }, [])
 
     return (
         <>
