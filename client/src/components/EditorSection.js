@@ -5,11 +5,12 @@ import EditorHeader from './EditorHeader'
 import EditorFooter from './EditorFooter'
 import { parseScript } from '../js/parse'
 
-function EditorSection() {
+function EditorSection({ outputHandler }) {
     const [value, setValue] = useState(editorValues[0])
 
     const handleRunButtonClick = () => {
         parseScript(value)
+        outputHandler()
     }
 
     return (

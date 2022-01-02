@@ -68,9 +68,6 @@
     overflow-y: scroll;
 }
 
-#output {
+.output-section {
     grid-area: output;
-    width: 100%;
-    height: 100%;
-    border: none;
 }
