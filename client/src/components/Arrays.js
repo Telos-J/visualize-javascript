@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 const Container = styled.div`
+    position: relative;
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -11,6 +12,7 @@ const Container = styled.div`
 `
 
 const CinemaImage = styled.img`
+    position: absolute;
     width: 50%;
     top: 2rem;
 `
@@ -22,11 +24,13 @@ const Movie = styled.div`
 `
 
 const MovieFrame = styled.img`
+    position: absolute;
     width: 30%;
     transform: translateY(2%) scale(1.06);
 `
 
 const MoviePoster = styled.img`
+    position: absolute;
     width: 21%;
 `
 
