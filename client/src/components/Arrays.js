@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { useState, useEffect } from "react"
+import OutputSection from "./OutputSection"
 
 const Container = styled.div`
     position: relative;
@@ -34,14 +36,38 @@ const MoviePoster = styled.img`
     width: 21%;
 `
 
-function Arrays() {
+function outputHandler(setSource) {
+        // const output = document.querySelector('#output').contentWindow.document
+        // const image = new Image()
+        // const searchTerm = 'spiderman homecoming'
+        // const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
+        // const result = await (await fetch(endpoint)).json()
+        // const posterPath = result.results[0].poster_path
+        // console.log(result.results[0].poster_path)
+        // image.src = `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}`
+        // const container = output.querySelector('#container')
+        // container.appendChild(image)
+        setSource("https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg")
+}
+
+function Arrays({setOutputHandler}) {
+    const [source, setSource] = useState('')
+
+    useEffect(() => {
+        setOutputHandler(prev => () => {
+            outputHandler(setSource)
+        })
+    }, [])
+
     return (
     <Container>
         <CinemaImage id="cinema-image" src="../img/cinema.png" alt="cinema"/>
+    { source.length > 0 ? (
         <Movie>
             <MovieFrame className="movie-frame" src="../img/movieFrame.png" alt="movie-frame"/>
-            <MoviePoster className="movie-poster" src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="movie-poster"/>
+            <MoviePoster className="movie-poster" src={source} alt="movie-poster"/>
         </Movie>
+        ) : null }       
     </Container>
     )
 }
