@@ -101,12 +101,25 @@ function processExpression(expression) {
     }
 }
 
+function getArrayValues(elements) {
+    const arrayValues = []
+    for (const element of elements) {
+        arrayValues.push(element.value)
+    }
+
+    return arrayValues
+}
+
 function processDeclarations(node) {
     for (let declaration of node.declarations) {
+        let value
+        if (declaration.init.type === 'Literal') value = declaration.init.value
+        else if (declaration.init.type === 'ArrayExpression') value = getArrayValues(declaration.init.elements)
+        
         const variableDeclaration = new VariableDeclaration(
             node.kind,
             declaration.id.name,
-            declaration.init.value
+            value
         )
         variableDeclarations[variableDeclaration.name] = variableDeclaration
         console.table(variableDeclaration)
