@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import Context from '../context'
 import Consolelog from './Consolelog'
 import Variables from './Variables'
+import Conditionals from './Conditionals'
+import Functions from './Functions'
 import Arrays from './Arrays'
 
 function OutputSection({ setOutputHandler }) {
@@ -12,6 +14,10 @@ function OutputSection({ setOutputHandler }) {
         output = <Consolelog setOutputHandler={setOutputHandler} />
     } else if (chapter === 2) {
         output = <Variables setOutputHandler={setOutputHandler} />
+    } else if (chapter === 3) {
+        output = <Conditionals setOutputHandler={setOutputHandler} />
+    } else if (chapter === 4) {
+        output = <Functions setOutputHandler={setOutputHandler} />
     } else if (chapter === 5) {
         output = <Arrays setOutputHandler={setOutputHandler} />
     }

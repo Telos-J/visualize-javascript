@@ -1,4 +1,4 @@
-<svg id="computer" width="536" height="717" viewBox="0 0 536 717" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg id="computer" viewBox="0 0 536 717" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="monitor">
         <path id="bottom" d="M180 595H536V617C536 628.046 527.046 637 516 637H200C188.954 637 180 628.046 180 617V595Z" fill="#C4C4C4" />
         <path id="button" d="M358 625C362.971 625 367 620.971 367 616C367 611.029 362.971 607 358 607C353.029 607 349 611.029 349 616C349 620.971 353.029 625 358 625Z" fill="#3C3C3B" />

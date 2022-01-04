@@ -1,0 +1,56 @@
+<svg viewBox="0 0 569 406" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="bed-back" d="M31.5 169.5C31.5 174.5 31.3333 246.5 31.5 285H336.5C336.333 250.5 336.5 180 336.5 169.5C336.5 159 325.333 153.5 319.5 151.5C287.333 144.667 220 130.4 208 128C196 125.6 177 126.043 166.5 128C129.833 134.833 54.0999 149.1 44.4999 151.5C32.4999 154.5 31.5 164.5 31.5 169.5Z" fill="#82757C" stroke="#5F525B" stroke-width="5"/>
+    <path id="pillow" d="M116.5 195C116.5 189.201 121.201 184.5 127 184.5H255C260.799 184.5 265.5 189.201 265.5 195V256.5H116.5V195Z" fill="white" stroke="#5F525B" stroke-width="5"/>
+    <g id="clock">
+        <circle id="Ellipse 4" cx="522.712" cy="87.05" r="20.5" transform="rotate(7.98 522.712 87.05)" fill="#D4826A" stroke="#5F525B" stroke-width="5"/>
+        <circle id="Ellipse 3" cx="453.31" cy="84.1778" r="20.5" transform="rotate(7.98 453.31 84.1778)" fill="#D4826A" stroke="#5F525B" stroke-width="5"/>
+        <path id="right-leg" d="M444 194.651L453.903 162.915L467.305 170.153L455.453 195.688L444 194.651Z" fill="#A2999E" stroke="#5F525B" stroke-width="5"/>
+        <path id="left-leg" d="M519.869 193.991L504.152 167.967L516.326 161.037L531.82 195.073L519.869 193.991Z" fill="#A2999E" stroke="#5F525B" stroke-width="5"/>
+        <circle id="clock-face" cx="485" cy="125" r="49.5" fill="white" stroke="#5F525B" stroke-width="5"/>
+        <line id="minute-hand" x1="486" y1="126" x2="486" y2="88" stroke="#5D5159" stroke-width="5"/>
+        <line id="hour-hand" x1="486" y1="125.997" x2="486" y2="104.596" stroke="#5F525B" stroke-width="5"/>
+        <circle id="clock-center" cx="486" cy="125" r="6.5" fill="white" stroke="#5F525B" stroke-width="5"/>
+        <path id="handle" d="M523.11 65.7373C521.884 56.4777 517.026 47.9097 490.393 47.0141C463.759 46.1185 455.233 51.476 452.886 62.4565" stroke="#5F525B" stroke-width="5"/>
+    </g>
+    <g id="cabinet">
+        <path id="right-leg_2" d="M419 383H434V403.497H419V383Z" fill="#7F7279" stroke="#5F525B" stroke-width="5"/>
+        <path id="left-leg_2" d="M535 384H550V403.497H535V384Z" fill="#7F7279" stroke="#5F525B" stroke-width="5"/>
+        <path id="cabinet_2" d="M556 194H414C408.477 194 404 198.477 404 204V375.5C404 381.023 408.477 385.5 414 385.5H556C561.523 385.5 566 381.023 566 375.5V204C566 198.477 561.523 194 556 194Z" fill="#9AC5BE" stroke="#5F525B" stroke-width="5"/>
+        <path id="door" d="M548.5 212H419.5V369.5H548.5V212Z" stroke="#5F525B" stroke-width="5"/>
+        <path id="handle_2" d="M439 308H434V273H439V308Z" fill="#9AC5BE" stroke="#5F525B" stroke-width="5"/>
+    </g>
+    <g id="student">
+        <g id="right-arm">
+            <path id="Vector 1" d="M113 296.5L150 251.5L136.5 243L105.5 281.5C81 287 56 291 56 291L57.9999 305.5L113 296.5Z" fill="#9AC5BE" stroke="#5F525B" stroke-width="5"/>
+            <path id="Ellipse 5" d="M48 288.5C52.899 288.5 57.5 293.273 57.5 300C57.5 306.727 52.899 311.5 48 311.5C43.101 311.5 38.5 306.727 38.5 300C38.5 293.273 43.101 288.5 48 288.5Z" fill="#FCE5B9" stroke="#5F525B" stroke-width="5"/>
+        </g>
+        <g id="left-arm">
+            <path id="Vector 1_2" d="M271.5 298L232 251.5L245.5 243L279 283C303.5 288.5 328.5 292.5 328.5 292.5L326.5 307L271.5 298Z" fill="#9AC5BE" stroke="#5F525B" stroke-width="5"/>
+            <path id="Ellipse 5_2" d="M336.5 290C331.601 290 327 294.773 327 301.5C327 308.227 331.601 313 336.5 313C341.399 313 346 308.227 346 301.5C346 294.773 341.399 290 336.5 290Z" fill="#FCE5B9" stroke="#5F525B" stroke-width="5"/>
+        </g>
+        <g id="body">
+            <path id="body_2" d="M243.357 237.342C230.979 224.998 148 229.5 141.5 234C135 238.5 135 245.5 135 245.5V297H248.467C248.467 297 249.546 243.513 243.357 237.342Z" fill="#9AC5BE" stroke="#5F525B" stroke-width="5"/>
+            <path id="pocket" d="M211.5 262.5H232" stroke="#5F525B" stroke-width="5" stroke-linecap="round"/>
+            <g id="neckline">
+                <path d="M191 249C186.5 249 176 235.5 173.5 230H208.5C205.667 237.167 195.5 249 191 249Z" fill="#FCE5B9"/>
+                <path d="M191 249C186.5 249 176 235.5 173.5 230H208.5C205.667 237.167 195.5 249 191 249ZM191 249V296.5" stroke="#5F525B" stroke-width="5"/>
+            </g>
+        </g>
+        <g id="face">
+            <path id="right-ear" d="M124.5 163.5C124.5 157.425 129.425 152.5 135.5 152.5H142.5V174.5H135.5C129.425 174.5 124.5 169.575 124.5 163.5Z" fill="#FCE5B9" stroke="#5F525B" stroke-width="5"/>
+            <path id="right-ear_2" d="M258.5 163.5C258.5 157.425 253.575 152.5 247.5 152.5H240.5V174.5H247.5C253.575 174.5 258.5 169.575 258.5 163.5Z" fill="#FCE5B9" stroke="#5F525B" stroke-width="5"/>
+            <path id="face-shape" d="M143.5 122.5H239.5V187C239.5 210.472 220.472 229.5 197 229.5H186C162.528 229.5 143.5 210.472 143.5 187V122.5Z" fill="#FCE5B9" stroke="#605259" stroke-width="5"/>
+            <path id="mouth" d="M176.5 201.13C176.5 200.782 176.782 200.5 177.13 200.5H203.87C204.218 200.5 204.5 200.782 204.5 201.13C204.5 207.962 198.962 213.5 192.13 213.5H188.87C182.038 213.5 176.5 207.962 176.5 201.13Z" fill="white" stroke="#5F525B" stroke-width="5"/>
+            <path id="right-eye" d="M178 176.5C178 179 178 179 171.5 179C165 179 165 179 165 176.5C165 174 165 174 171.5 174C178 174 178 174 178 176.5Z" fill="#5F525B"/>
+            <path id="left-eye" d="M217 176.5C217 179 217 179 210.5 179C204 179 204 179 204 176.5C204 174 204 174 210.5 174C217 174 217 174 217 176.5Z" fill="#5F525B"/>
+            <line id="right-eyebrow" x1="161.5" y1="162.5" x2="177.5" y2="162.5" stroke="#5F525B" stroke-width="5" stroke-linecap="round"/>
+            <line id="left-eyebrow" x1="204.5" y1="162.5" x2="220.5" y2="162.5" stroke="#5F525B" stroke-width="5" stroke-linecap="round"/>
+            <path id="hair" d="M253.5 122.5C255.5 132.9 247 160.833 242.5 173.5C242.5 168 232.5 153 231 144.5C229.5 136 230.5 127 225 133.5C219.5 140 211.5 143.5 209 144.5C206.5 145.5 196.788 148.19 202 140C203.5 137.643 206 132 206 127.5C206 123 203.3 125.7 190.5 134.5C174.5 145.5 155.5 151 147 154C138.5 157 115 158 122 154C129 150 137 132 129.5 138.5C123.5 143.7 113 143 108.5 142C109.833 135.667 115 119.6 125 106C137.5 89 155 76 167.5 69.5C180 63 195.5 60.5 210 61.5C224.5 62.5 239.5 72 244.5 84C248.5 93.6 245.5 106.667 243.5 112C246 111.167 251.5 112.1 253.5 122.5Z" fill="#D4826A" stroke="#5F525B" stroke-width="5"/>
+        </g>
+    </g>
+    <path id="bedsheet" d="M75.5005 239C37.0312 245.701 30.6672 271.833 32.5005 284.5C133.667 287 336 284.5 336 284.5C336 277 345.5 247.499 291.5 239C221.5 227.982 151.5 225.761 75.5005 239Z" fill="white" stroke="#5F525B" stroke-width="5"/>
+    <path id="bed-front" d="M2.5 403.5H32.5V379H335.5V403.497H367V267C367 250.5 335.5 250.5 335.5 267V284.5H32.5V268.4C32.5 250 2.5 250 2.5 269.5V403.5Z" fill="#82757C" stroke="#5F525B" stroke-width="5"/>
+    <path class="z" id="z3" d="M40 80H58L40 99H58" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path class="z" id="z2" d="M80 46H98L80 65H98" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path class="z" id="z1" d="M28 8H46L28 27H46" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

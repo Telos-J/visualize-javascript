@@ -1,9 +1,9 @@
 import * as esprima from 'esprima'
-
 let variableDeclarations = {},
     expressionStatements = [],
     assignmentExpressions = [],
-    ifStatements = []
+    ifStatements = [],
+    functionDeclarations = {}
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -47,18 +47,24 @@ class IfStatement {
     }
 }
 
-function reset() {
+class FunctionDeclaration {
+    constructor(name, params, body, returnData) {
+        this.name = name
+        this.params = params
+        this.body = body
+        this.returnData = returnData
+    }
+}
+
+export function parseScript(script) {
+    console.clear()
+    let syntax = esprima.parseScript(script, { loc: true, range: true })
+    console.log(syntax)
     variableDeclarations = {}
     expressionStatements = []
     assignmentExpressions = []
     ifStatements = []
-}
-
-function parseScript(script) {
-    console.clear()
-    let syntax = esprima.parseScript(script, { loc: true, range: true })
-    console.log(syntax)
-    reset()
+    functionDeclarations = {}
     deconstructSyntax(syntax)
 }
 
@@ -70,6 +76,8 @@ function deconstructSyntax(syntax) {
             processDeclarations(node)
         } else if (node.type === 'IfStatement') {
             processIfStatement(node)
+        } else if (node.type === 'FunctionDeclaration') {
+            processFunctionDeclaration(node)
         }
     }
 }
@@ -78,10 +86,14 @@ function processExpression(expression) {
     if (expression.type === 'CallExpression') {
         const callee = expression.callee
         const argument = expression.arguments[0]
-        const expressionStatement = new ExpressionStatement(
-            callee.object.name,
-            callee.property.name
-        )
+        const expressionStatement = new ExpressionStatement()
+
+        if (callee.type === 'MemberExpression') {
+            expressionStatement.object = callee.object.name
+            expressionStatement.property = callee.property.name
+        } else if (callee.type === 'Identifier') {
+            expressionStatement.property = callee.name
+        }
 
         if (argument.type === 'Literal') expressionStatement.value = argument.value
         else if (argument.type === 'Identifier')
@@ -114,13 +126,10 @@ function processDeclarations(node) {
     for (let declaration of node.declarations) {
         let value
         if (declaration.init.type === 'Literal') value = declaration.init.value
-        else if (declaration.init.type === 'ArrayExpression') value = getArrayValues(declaration.init.elements)
-        
-        const variableDeclaration = new VariableDeclaration(
-            node.kind,
-            declaration.id.name,
-            value
-        )
+        else if (declaration.init.type === 'ArrayExpression')
+            value = getArrayValues(declaration.init.elements)
+
+        const variableDeclaration = new VariableDeclaration(node.kind, declaration.id.name, value)
         variableDeclarations[variableDeclaration.name] = variableDeclaration
         console.table(variableDeclaration)
     }
@@ -138,15 +147,27 @@ function processIfStatement(node) {
     console.table(ifStatement)
 }
 
+function processFunctionDeclaration(node) {
+    console.log(node)
+    let body = node.body.body
+    let returnData
+    if (body[body.length - 1].type === 'ReturnStatement') {
+        returnData = body[body.length - 1]
+        body = body.slice(0, -1)
+    }
+
+    const functionDeclaration = new FunctionDeclaration(
+        node.id.name,
+        node.params.map(params => params.name),
+        body,
+        getValue(returnData.argument)
+    )
+    console.table(functionDeclaration)
+}
+
 function getValue(node) {
     if (node.type === 'Identifier') return variableDeclarations[node.name].value
     else if (node.type === 'Literal') return node.value
 }
 
-export {
-    parseScript,
-    variableDeclarations,
-    expressionStatements,
-    assignmentExpressions,
-    ifStatements,
-}
+export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements }
