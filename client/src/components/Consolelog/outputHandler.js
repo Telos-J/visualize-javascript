@@ -1,22 +1,8 @@
-import { ReactComponent as Computer } from '../img/computer.svg'
-import styled from 'styled-components'
-import { useEffect } from 'react'
 import { gsap } from 'gsap'
-import { expressionStatements } from '../js/parse'
-
-const Container = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-`
-
-const StyledComputer = styled(Computer)`
-    height: 80%;
-`
+import { expressionStatements } from '../../js/parse'
 
 let talkTimeline
+let lookTimeline
 
 function outputHandler() {
     let value = ''
@@ -36,7 +22,6 @@ function outputHandler() {
             y: 150,
             transformOrigin: 'bottom right',
         })
-        gsap.from(speechText, { scale: 0, x: -15, y: 150, transformOrigin: 'bottom right' })
         talk(value.length * 0.1)
     }
 }
@@ -47,11 +32,13 @@ function talk(seconds) {
     const talk = computer.querySelectorAll('.talk')
     const speechBubble = computer.querySelector('#speech-bubble')
     gsap.set(smile, { display: 'none' })
+    lookTimeline.tweenTo(0.25, { duration: 0.5 })
     talkTimeline = gsap
         .timeline({
             repeat: seconds * 2,
             onComplete: () => {
                 gsap.set(smile, { display: 'inline' })
+                lookTimeline.play()
             },
         })
         .set(talk[0], { display: 'inline' }, 0)
@@ -66,21 +53,15 @@ function talk(seconds) {
     gsap.to(speechBubble, { display: 'none', delay: seconds })
 }
 
-function Consolelog({ setOutputHandler }) {
-    useEffect(() => {
-        const computer = document.querySelector('#computer')
-        const eyelids = computer.querySelectorAll('.eyelid')
-        const pupils = computer.querySelectorAll('.pupil')
-        gsap.timeline({ repeat: -1, yoyo: true }).to(eyelids, { y: 57, delay: 3, duration: 0.1 })
-        gsap.timeline({ repeat: -1, yoyo: true }).to(pupils, { x: 20, delay: 2, duration: 0.2 })
-        setOutputHandler(prev => outputHandler)
-    }, [])
-
-    return (
-        <Container>
-            <StyledComputer id="computer" />
-        </Container>
-    )
+function blink() {
+    const computer = document.querySelector('#computer')
+    const eyelids = computer.querySelectorAll('.eyelid')
+    const pupils = computer.querySelectorAll('.pupil')
+    gsap.timeline({ repeat: -1, yoyo: true }).to(eyelids, { y: 57, delay: 3, duration: 0.1 })
+    lookTimeline = gsap.timeline({ repeat: -1, yoyo: true, repeatDelay: 0.5 }).to(pupils, {
+        x: 20,
+        duration: 1,
+    })
 }
 
-export default Consolelog
+export { outputHandler, blink }

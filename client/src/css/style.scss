@@ -41,6 +41,11 @@
             cursor: pointer;
             width: 5rem;
             height: 100%;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: -moz-none;
+            -o-user-select: none;
+            user-select: none;
             justify-content: center;
             align-items: center;
             background-color: #3794ff;

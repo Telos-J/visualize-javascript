@@ -1,14 +1,17 @@
 import { useEffect } from 'react'
-
-function outputHandler() {
-    console.log('variables')
-}
+import { Container, StyledBox } from './styles'
+import { outputHandler } from './outputHandler'
 
 function Variables({ setOutputHandler }) {
     useEffect(() => {
         setOutputHandler(prev => outputHandler)
     })
-    return <div>Variables</div>
+
+    return (
+        <Container>
+            <StyledBox />
+        </Container>
+    )
 }
 
 export default Variables

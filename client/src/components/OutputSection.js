@@ -6,7 +6,7 @@ import Arrays from './Arrays'
 
 function OutputSection({ setOutputHandler }) {
     const [chapter, setChapter] = useContext(Context)
-        let output
+    let output
 
     if (chapter === 1) {
         output = <Consolelog setOutputHandler={setOutputHandler} />
