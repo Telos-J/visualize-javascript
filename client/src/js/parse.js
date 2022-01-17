@@ -95,8 +95,8 @@ function processExpression(expression) {
             expressionStatement.property = callee.name
         }
 
-        if (argument.type === 'Literal') expressionStatement.value = argument.value
-        else if (argument.type === 'Identifier')
+        if (argument ?.type === 'Literal') expressionStatement.value = argument.value
+        else if (argument ?.type === 'Identifier')
             expressionStatement.value = variableDeclarations[argument.name].value
 
         expressionStatements.push(expressionStatement)

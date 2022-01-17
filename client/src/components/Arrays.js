@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react"
-import {SEARCH_BASE_URL, IMAGE_BASE_URL, POSTER_SIZE} from '../config'
-import {variableDeclarations} from "../js/parse"
+import {SEARCH_BASE_URL, IMAGE_BASE_URL, POSTER_SIZE, NO_POSTER_URL} from '../config'
+import {expressionStatements, variableDeclarations} from "../js/parse"
 
 const Container = styled.div`
     position: relative;
@@ -49,11 +49,17 @@ const MoviePoster = styled.img`
 
 async function outputHandler(setSources) {
         const newSources = []
+        for (const expressionStatement of expressionStatements) {
+            if (expressionStatement.property === 'push')
+                variableDeclarations.movies.value.push(expressionStatement.value)
+            else if (expressionStatement.property === 'pop')
+                variableDeclarations.movies.value.pop()
+        }
         for (const searchTerm of variableDeclarations.movies.value) {
             const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
             const result = await (await fetch(endpoint)).json()
-            const posterPath = result.results[0].poster_path
-            const src = `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}`
+            const posterPath = result.results[0]?.poster_path
+            const src = posterPath ? `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}` : NO_POSTER_URL
             newSources.push(src)
         }
         setSources(newSources)

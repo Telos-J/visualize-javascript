@@ -13,6 +13,7 @@ const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/'
 const BACKDROP_SIZE = 'w1280'
 // w92, w154, w185, w342, w500, w780, original
 const POSTER_SIZE = 'w780'
+const NO_POSTER_URL = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'
 
 export {
     SEARCH_BASE_URL,
@@ -25,4 +26,5 @@ export {
     REQUEST_TOKEN_URL,
     LOGIN_URL,
     SESSION_ID_URL,
+    NO_POSTER_URL
 }
