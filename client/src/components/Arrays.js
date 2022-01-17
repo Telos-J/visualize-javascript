@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react"
-import OutputSection from "./OutputSection"
+import {SEARCH_BASE_URL, IMAGE_BASE_URL, POSTER_SIZE} from '../config'
+import {variableDeclarations} from "../js/parse"
 
 const Container = styled.div`
     position: relative;
@@ -36,18 +37,14 @@ const MoviePoster = styled.img`
     width: 21%;
 `
 
-function outputHandler(setSource) {
-        // const output = document.querySelector('#output').contentWindow.document
-        // const image = new Image()
-        // const searchTerm = 'spiderman homecoming'
-        // const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
-        // const result = await (await fetch(endpoint)).json()
-        // const posterPath = result.results[0].poster_path
-        // console.log(result.results[0].poster_path)
-        // image.src = `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}`
-        // const container = output.querySelector('#container')
-        // container.appendChild(image)
-        setSource("https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg")
+async function outputHandler(setSource) {
+        console.log(variableDeclarations)
+        const searchTerm = variableDeclarations.movies.value[0]
+        const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
+        const result = await (await fetch(endpoint)).json()
+        const posterPath = result.results[0].poster_path
+        const src = `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}`
+        setSource(src)
 }
 
 function Arrays({setOutputHandler}) {
