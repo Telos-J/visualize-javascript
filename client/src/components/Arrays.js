@@ -19,8 +19,18 @@ const CinemaImage = styled.img`
     width: 50%;
     top: 2rem;
 `
+const MovieList = styled.div`
+    display: flex;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    justify-content: space-evenly;
+`
+
 
 const Movie = styled.div`
+    position: relative;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,43 +38,47 @@ const Movie = styled.div`
 
 const MovieFrame = styled.img`
     position: absolute;
-    width: 30%;
+    width: 100%;
     transform: translateY(2%) scale(1.06);
 `
 
 const MoviePoster = styled.img`
     position: absolute;
-    width: 21%;
+    width: 71%;
 `
 
-async function outputHandler(setSource) {
-        console.log(variableDeclarations)
-        const searchTerm = variableDeclarations.movies.value[0]
-        const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
-        const result = await (await fetch(endpoint)).json()
-        const posterPath = result.results[0].poster_path
-        const src = `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}`
-        setSource(src)
+async function outputHandler(setSources) {
+        const newSources = []
+        for (const searchTerm of variableDeclarations.movies.value) {
+            const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
+            const result = await (await fetch(endpoint)).json()
+            const posterPath = result.results[0].poster_path
+            const src = `${IMAGE_BASE_URL}${POSTER_SIZE}${posterPath}`
+            newSources.push(src)
+        }
+        setSources(newSources)
 }
 
 function Arrays({setOutputHandler}) {
-    const [source, setSource] = useState('')
+    const [sources, setSources] = useState([])
 
     useEffect(() => {
         setOutputHandler(prev => () => {
-            outputHandler(setSource)
+            outputHandler(setSources)
         })
     }, [])
 
     return (
     <Container>
         <CinemaImage id="cinema-image" src="../img/cinema.png" alt="cinema"/>
-    { source.length > 0 ? (
-        <Movie>
-            <MovieFrame className="movie-frame" src="../img/movieFrame.png" alt="movie-frame"/>
-            <MoviePoster className="movie-poster" src={source} alt="movie-poster"/>
-        </Movie>
-        ) : null }       
+        <MovieList>
+        { sources.map(source => (
+            <Movie>
+                <MovieFrame className="movie-frame" src="../img/movieFrame.png" alt="movie-frame"/>
+                <MoviePoster className="movie-poster" src={source} alt="movie-poster"/>
+            </Movie>
+        ))}
+        </MovieList>
     </Container>
     )
 }
