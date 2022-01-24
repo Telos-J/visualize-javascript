@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react"
 import {SEARCH_BASE_URL, IMAGE_BASE_URL, POSTER_SIZE, NO_POSTER_URL} from '../config'
-import {expressionStatements, variableDeclarations} from "../js/parse"
+import {expressionStatements, variableDeclarations, assignmentExpressions} from "../js/parse"
 
 const Container = styled.div`
     position: relative;
@@ -56,6 +56,11 @@ async function outputHandler(setSources) {
                 variableDeclarations.movies.value.push(expressionStatement.value)
             else if (expressionStatement.property === 'pop')
                 variableDeclarations.movies.value.pop()
+        }
+        for (const assignmentExpression of assignmentExpressions) {
+            if (assignmentExpression.name === 'movies' && typeof assignmentExpression.property === 'number') {
+                variableDeclarations.movies.value[assignmentExpression.property] = assignmentExpression.value
+            }
         }
         for (const searchTerm of variableDeclarations.movies.value) {
             const endpoint = `${SEARCH_BASE_URL}${searchTerm}`
