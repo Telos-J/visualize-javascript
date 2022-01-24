@@ -22,8 +22,9 @@ class ExpressionStatement {
 }
 
 class AssignmentExpression {
-    constructor(name, value) {
+    constructor(name, property, value) {
         this.name = name
+        this.property = property
         this.value = value
     }
 }
@@ -95,18 +96,21 @@ function processExpression(expression) {
             expressionStatement.property = callee.name
         }
 
-        if (argument ?.type === 'Literal') expressionStatement.value = argument.value
-        else if (argument ?.type === 'Identifier')
+        if (argument?.type === 'Literal') expressionStatement.value = argument.value
+        else if (argument?.type === 'Identifier')
             expressionStatement.value = variableDeclarations[argument.name].value
 
         expressionStatements.push(expressionStatement)
         console.table(expressionStatement)
         return expressionStatement
     } else if (expression.type === 'AssignmentExpression') {
-        const assignmentExpression = new AssignmentExpression(
-            expression.left.name,
-            expression.right.value
-        )
+        const assignmentExpression = new AssignmentExpression(null, null, expression.right.value)
+        if (expression.left.type === 'Identifier') {
+            assignmentExpression.name = expression.left.name
+        } else if (expression.left.type === 'MemberExpression') {
+            assignmentExpression.name = expression.left.object.name
+            assignmentExpression.property = expression.left.property.value
+        }
         assignmentExpressions.push(assignmentExpression)
         console.table(assignmentExpression)
         return assignmentExpression
