@@ -49,6 +49,8 @@ const MoviePoster = styled.img`
 
 async function outputHandler(setSources) {
         const newSources = []
+
+
         for (const expressionStatement of expressionStatements) {
             if (expressionStatement.property === 'push')
                 variableDeclarations.movies.value.push(expressionStatement.value)
