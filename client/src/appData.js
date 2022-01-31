@@ -94,7 +94,17 @@ const descriptions = [
     </>,
     <>
         <h1>Chapter 5. Arrays</h1>
+        <p>
+           Arrays are lists that store data. They have .push() and .pop() methods, which add and remove items. You can add items with .push(), and item in () will be added on the right side of the array. You can remove items from array with .pop() methods, and items on the right side will be removed.
+        </p>
+        <p>
+            You can change items in an array with myArray[0] = 'new string' syntax. Also, index number starts from 0. For example, the second item in the array is index 1.
+        </p>
+        <p>
+            In this chapter, I made movies array. You can see movie posters on the right side when you write movie titles in editor. Control your own cinema by manipulating the movie arrays.
+        </p>
     </>,
+
 ]
 
 export { editorValues, templateSources, chapterNames, descriptions }
