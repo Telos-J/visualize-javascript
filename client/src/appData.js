@@ -16,7 +16,11 @@ function feedCat(food) {
     return '💩'
 }
 feedCat(fish)`,
-    'const movies = []'
+    'const movies = []',
+    `const items = ['🍕', '🍿', '🧇']
+for (const item of items) {
+    checkout(item)
+}`
 ]
 
 const templateSources = [
@@ -24,10 +28,11 @@ const templateSources = [
     'variable-output.html',
     'conditional-output.html',
     'function-output.html',
-    'array-output.html'
+    'array-output.html',
+    'loop-output.html'
 ]
 
-const chapterNames = ['console-log', 'variables', 'conditionals', 'functions', 'arrays']
+const chapterNames = ['console-log', 'variables', 'conditionals', 'functions', 'arrays', 'loops']
 
 const descriptions = [
     <>
@@ -104,6 +109,9 @@ const descriptions = [
             In this chapter, I made movies array. You can see movie posters on the right side when you write movie titles in editor. Control your own cinema by manipulating the movie arrays.
         </p>
     </>,
+    <>
+        <h1>Chapter 6. Loops</h1>
+    </>
 
 ]
 

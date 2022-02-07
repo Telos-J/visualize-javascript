@@ -5,6 +5,7 @@ import Variables from './Variables'
 import Conditionals from './Conditionals'
 import Functions from './Functions'
 import Arrays from './Arrays'
+import Loops from './Loops'
 
 function OutputSection({ setOutputHandler }) {
     const [chapter, setChapter] = useContext(Context)
@@ -20,6 +21,8 @@ function OutputSection({ setOutputHandler }) {
         output = <Functions setOutputHandler={setOutputHandler} />
     } else if (chapter === 5) {
         output = <Arrays setOutputHandler={setOutputHandler} />
+    } else if (chapter === 6) {
+        output = <Loops />
     }
 
     return <section className="output-section">{output}</section>
