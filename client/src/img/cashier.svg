@@ -478,6 +478,9 @@
 <path id="Rectangle 19" d="M1353 474C1353 469.029 1357.03 465 1362 465H1408C1412.97 465 1417 469.029 1417 474V478C1417 482.971 1412.97 487 1408 487H1362C1357.03 487 1353 482.971 1353 478V474Z" fill="#286EA0"/>
 </g>
 <g id="ShoppingTrolley 1">
+<text class="grocery-item" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="80" letter-spacing="0em"><tspan x="550" y="820.4"></tspan></text>
+<text class="grocery-item" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="80" letter-spacing="0em"><tspan x="650" y="820.4"></tspan></text>
+<text class="grocery-item" fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="80" letter-spacing="0em"><tspan x="750" y="820.4"></tspan></text>
 <g id="g4163">
 <path id="path4156" d="M499.206 920.03C498.755 920.014 498.299 920.019 497.837 920.04C489.384 920.15 480.542 924.831 477.925 933.301C473.515 945.183 480.846 961.091 494.114 962.668C503.554 963.685 514.32 958.957 517.183 949.292C521.62 936.771 513.161 920.433 499.206 920.03ZM731.282 920.051C722.629 920.045 713.667 925.114 711.234 933.804C707.185 945.67 714.543 961.29 727.695 962.805C738.089 963.926 749.695 957.374 751.389 946.467C753.953 933.977 744.865 919.673 731.282 920.051Z" fill="#E6E6E6"/>
 <path id="path4" d="M430.212 577.254C437.941 576.579 444.496 582.449 451.209 585.633C458.243 590.167 453.247 600.139 449.393 605.216C440.93 610.838 432.985 601.928 425.191 599.34C415.679 594.622 421.356 579.075 430.212 577.254Z" fill="#FD0101"/>

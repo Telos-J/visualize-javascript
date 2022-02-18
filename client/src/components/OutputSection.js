@@ -22,7 +22,7 @@ function OutputSection({ setOutputHandler }) {
     } else if (chapter === 5) {
         output = <Arrays setOutputHandler={setOutputHandler} />
     } else if (chapter === 6) {
-        output = <Loops />
+        output = <Loops setOutputHandler={setOutputHandler} />
     }
 
     return <section className="output-section">{output}</section>
