@@ -1,7 +1,8 @@
-import { ReactComponent as Cashier } from '../img/cashier.svg'
+import {ReactComponent as Cashier} from '../img/cashier.svg'
+import {gsap} from 'gsap'
 import styled from "styled-components";
-import { useEffect } from 'react';
-import { variableDeclarations } from '../js/parse';
+import {useEffect} from 'react';
+import {variableDeclarations} from '../js/parse';
 
 const StyledCashier = styled(Cashier)`
     width: 100%;
@@ -9,13 +10,12 @@ const StyledCashier = styled(Cashier)`
 
 function outputHandler() {
     const groceryItems = document.querySelectorAll('.grocery-item')
-    console.log(groceryItems)
     for (const i in variableDeclarations.items?.value) {
-        groceryItems[i].querySelector('tspan').innerHTML = variableDeclarations.items.value[i]
+        const groceryItem = groceryItems[i].querySelector('tspan')
+        groceryItem.innerHTML = variableDeclarations.items.value[i]
+        gsap.to(groceryItems[i], {y: -100})
     }
 }
-
-
 
 function Loops({setOutputHandler}) {
     useEffect(() => {
