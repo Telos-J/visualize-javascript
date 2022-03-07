@@ -111,6 +111,15 @@ const descriptions = [
     </>,
     <>
         <h1>Chapter 6. Loops</h1>
+        <p>
+            Loops can repeat some actions. For of loops perform repetitive actions. We don't have to code the same thing over and over agian.
+        </p>
+        <p>
+            There are variety of for loops, and for of loops are most commonly used. Also, the for of loops through a given array, and runs a set of commands in each item of the array.
+        </p>
+        <p>
+            You can checkout your grocery items with Loops. When you put the grocery items in the items array, it will appear in the shopping cart. Then, it will go in front of cashier. Next, the for loops make the items go to the cashier.
+        </p>
     </>
 
 ]

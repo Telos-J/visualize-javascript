@@ -3,7 +3,8 @@ let variableDeclarations = {},
     expressionStatements = [],
     assignmentExpressions = [],
     ifStatements = [],
-    functionDeclarations = {}
+    functionDeclarations = {},
+    forOfStatements = []
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -57,6 +58,12 @@ class FunctionDeclaration {
     }
 }
 
+class ForOfStatement {
+    constructor(array) {
+        this.array = array
+    }
+}
+
 export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
@@ -66,6 +73,7 @@ export function parseScript(script) {
     assignmentExpressions = []
     ifStatements = []
     functionDeclarations = {}
+    forOfStatements = []
     deconstructSyntax(syntax)
 }
 
@@ -79,6 +87,8 @@ function deconstructSyntax(syntax) {
             processIfStatement(node)
         } else if (node.type === 'FunctionDeclaration') {
             processFunctionDeclaration(node)
+        } else if (node.type === 'ForOfStatement') {
+            processForOfStatement(node)
         }
     }
 }
@@ -152,7 +162,6 @@ function processIfStatement(node) {
 }
 
 function processFunctionDeclaration(node) {
-    console.log(node)
     let body = node.body.body
     let returnData
     if (body[body.length - 1].type === 'ReturnStatement') {
@@ -166,6 +175,7 @@ function processFunctionDeclaration(node) {
         body,
         getValue(returnData.argument)
     )
+    functionDeclarations.push(functionDeclaration)
     console.table(functionDeclaration)
 }
 
@@ -174,4 +184,10 @@ function getValue(node) {
     else if (node.type === 'Literal') return node.value
 }
 
-export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements }
+function processForOfStatement(node) {
+    const forOfStatement = new ForOfStatement(node.right.name)
+    forOfStatements.push(forOfStatement)
+    console.table(forOfStatement)
+}
+
+export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements, functionDeclarations, forOfStatements }
