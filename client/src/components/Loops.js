@@ -17,6 +17,8 @@ function outputHandler() {
     totalPrice.innerHTML ='$0'
 
     const groceries = variableDeclarations.items?.value
+    const prices = variableDeclarations.prices?.value
+
     for (const i in groceries) {
         const newGroceryItem = groceryItemBase.cloneNode()
         newGroceryItem.innerHTML = groceries[i]
@@ -28,7 +30,7 @@ function outputHandler() {
         if (forOfStatements[0]?.array === 'items') {
             gsap.to(newGroceryItem, {attr: {x: 750, y: 600}, delay: 0.5 * i})
             gsap.to(newGroceryItem, {attr: {x: 1250}, delay: 0.5 * i + 0.5, duration: 1.7, ease: 'none', onComplete: () => {
-                totalPrice.innerHTML = `$${parseInt(totalPrice.innerHTML.slice(1)) + 5}`
+                totalPrice.innerHTML = `$${parseInt(totalPrice.innerHTML.slice(1)) + prices[i]}`
                 gsap.set(newGroceryItem, {opacity: 0})
             }})
         }
