@@ -80,7 +80,7 @@ export function parseScript(script) {
 function deconstructSyntax(syntax) {
     for (let node of syntax.body) {
         if (node.type === 'ExpressionStatement') {
-            processExpression(node.expression)
+            return processExpression(node.expression)
         } else if (node.type === 'VariableDeclaration') {
             processDeclarations(node)
         } else if (node.type === 'IfStatement') {
@@ -175,7 +175,7 @@ function processFunctionDeclaration(node) {
         body,
         getValue(returnData.argument)
     )
-    functionDeclarations.push(functionDeclaration)
+    functionDeclarations[functionDeclaration.name] = (functionDeclaration)
     console.table(functionDeclaration)
 }
 
