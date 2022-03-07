@@ -11,7 +11,10 @@ const StyledCashier = styled(Cashier)`
 function outputHandler() {
     const groceriesContainer = document.querySelector('#groceries')
     const groceryItemBase = document.querySelector('.grocery-item')
+    const totalPrice = document.querySelector('#total-price')
     groceriesContainer.innerHTML = ''
+    gsap.set(groceryItemBase, {opacity: 1})
+    totalPrice.innerHTML ='$0'
 
     const groceries = variableDeclarations.items?.value
     for (const i in groceries) {
@@ -24,7 +27,10 @@ function outputHandler() {
         
         if (forOfStatements[0]?.array === 'items') {
             gsap.to(newGroceryItem, {attr: {x: 750, y: 600}, delay: 0.5 * i})
-            gsap.to(newGroceryItem, {attr: {x: 1250}, delay: 0.5 * i + 0.5, duration: 1.7, ease: 'none'})
+            gsap.to(newGroceryItem, {attr: {x: 1250}, delay: 0.5 * i + 0.5, duration: 1.7, ease: 'none', onComplete: () => {
+                totalPrice.innerHTML = `$${parseInt(totalPrice.innerHTML.slice(1)) + 5}`
+                gsap.set(newGroceryItem, {opacity: 0})
+            }})
         }
     }
 }

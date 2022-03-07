@@ -473,9 +473,10 @@
 <rect id="Rectangle 21" x="1414" y="566" width="9" height="7" fill="#D77271"/>
 <rect id="Rectangle 13" x="1396" y="544" width="9" height="7" fill="#D77271"/>
 <rect id="Rectangle 16" x="1414" y="544" width="9" height="7" fill="#D77271"/>
-<rect id="Rectangle 14" x="1378" y="492" width="16" height="17" fill="#D6D9DB"/>
-<rect id="Rectangle 15" x="1349" y="460" width="72" height="32" rx="9" fill="#D7DAD5"/>
-<path id="Rectangle 19" d="M1353 474C1353 469.029 1357.03 465 1362 465H1408C1412.97 465 1417 469.029 1417 474V478C1417 482.971 1412.97 487 1408 487H1362C1357.03 487 1353 482.971 1353 478V474Z" fill="#286EA0"/>
+<rect id="Rectangle 14" x="1418" y="492" width="16" height="17" fill="#D6D9DB"/>
+<rect id="Rectangle 15" x="1369" y="448" width="112" height="44" rx="9" fill="#D7DAD5"/>
+<path id="Rectangle 19" d="M1375 464C1375 459.029 1379.03 455 1384 455H1466C1470.97 455 1475 459.029 1475 464V476C1475 480.971 1470.97 485 1466 485H1384C1379.03 485 1375 480.971 1375 476V464Z" fill="#286EA0"/>
+<text id="total-price" fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="20" letter-spacing="0em" x="1425.1" y="476.836" text-anchor="middle">$0</text>
 </g>
 <g id="ShoppingTrolley 1">
 <g id="groceries">
