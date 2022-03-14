@@ -1,10 +1,12 @@
 import * as esprima from 'esprima'
+
 let variableDeclarations = {},
     expressionStatements = [],
     assignmentExpressions = [],
     ifStatements = [],
     functionDeclarations = {},
-    forOfStatements = []
+    forOfStatements = [] ,
+    forInStatements = []
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -64,6 +66,13 @@ class ForOfStatement {
     }
 }
 
+class ForInStatement {
+    constructor(array1, array2) {
+        this.array1 = array1
+        this.array2 = array2
+    }
+}
+
 export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
@@ -74,6 +83,7 @@ export function parseScript(script) {
     ifStatements = []
     functionDeclarations = {}
     forOfStatements = []
+    forInStatements = []
     deconstructSyntax(syntax)
 }
 
@@ -89,6 +99,8 @@ function deconstructSyntax(syntax) {
             processFunctionDeclaration(node)
         } else if (node.type === 'ForOfStatement') {
             processForOfStatement(node)
+        } else if (node.type === 'ForInStatement') {
+            processForInStatement(node)
         }
     }
 }
@@ -190,4 +202,11 @@ function processForOfStatement(node) {
     console.table(forOfStatement)
 }
 
-export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements, functionDeclarations, forOfStatements }
+function processForInStatement(node) {
+    const expression = node.body.body[0].expression
+    const forInStatement = new ForInStatement(expression.arguments[0].object.name, expression.arguments[1].object.name)
+    forInStatements.push(forInStatement)
+    console.table(forInStatement)
+}
+
+export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements, functionDeclarations, forOfStatements, forInStatements }

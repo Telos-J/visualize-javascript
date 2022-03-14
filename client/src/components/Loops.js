@@ -2,7 +2,7 @@ import {ReactComponent as Cashier} from '../img/cashier.svg'
 import {gsap} from 'gsap'
 import styled from "styled-components";
 import {useEffect} from 'react';
-import {variableDeclarations, forOfStatements} from '../js/parse';
+import {variableDeclarations, forOfStatements, forInStatements} from '../js/parse';
 
 const StyledCashier = styled(Cashier)`
     width: 100%;
@@ -29,10 +29,13 @@ function outputHandler() {
         
         if (forOfStatements[0]?.array === 'items') {
             gsap.to(newGroceryItem, {attr: {x: 750, y: 600}, delay: 0.5 * i})
-            gsap.to(newGroceryItem, {attr: {x: 1250}, delay: 0.5 * i + 0.5, duration: 1.7, ease: 'none', onComplete: () => {
-                totalPrice.innerHTML = `$${parseInt(totalPrice.innerHTML.slice(1)) + (prices ? prices[i] : 0)}`
-                gsap.set(newGroceryItem, {opacity: 0})
-            }})
+            gsap.to(newGroceryItem, {
+                attr: {x: 1250}, delay: 0.5 * i + 0.5, duration: 1.7, ease: 'none', onComplete: () => {
+                    const usePrices = prices && forInStatements[0]?.array1 === 'items' && forInStatements[0]?.array2 === 'prices'
+                    totalPrice.innerHTML = `$${parseInt(totalPrice.innerHTML.slice(1)) + (usePrices ? prices[i] : 0)}` 
+                    gsap.set(newGroceryItem, {opacity: 0})
+                }
+            })
         }
     }
 }

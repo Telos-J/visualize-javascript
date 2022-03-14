@@ -120,6 +120,9 @@ const descriptions = [
         <p>
             You can checkout your grocery items with Loops. When you put the grocery items in the items array, it will appear in the shopping cart. Then, it will go in front of cashier. Next, the for loops make the items go to the cashier.
         </p>
+        <p>
+            Create prices array and for-in loop to checkout items and prices. Then, you will see the prices on the cash register.
+        </p>
     </>
 
 ]
