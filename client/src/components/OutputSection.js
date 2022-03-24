@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import {useState, useEffect, useContext} from 'react'
 import Context from '../context'
 import Consolelog from './Consolelog'
 import Variables from './Variables'
@@ -6,8 +6,9 @@ import Conditionals from './Conditionals'
 import Functions from './Functions'
 import Arrays from './Arrays'
 import Loops from './Loops'
+import Objects from './Objects'
 
-function OutputSection({ setOutputHandler }) {
+function OutputSection({setOutputHandler}) {
     const [chapter, setChapter] = useContext(Context)
     let output
 
@@ -23,7 +24,10 @@ function OutputSection({ setOutputHandler }) {
         output = <Arrays setOutputHandler={setOutputHandler} />
     } else if (chapter === 6) {
         output = <Loops setOutputHandler={setOutputHandler} />
+    } else if (chapter === 7) {
+        output = <Objects setOutputHandler={setOutputHandler} />
     }
+
 
     return <section className="output-section">{output}</section>
 }
