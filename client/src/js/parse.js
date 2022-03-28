@@ -6,7 +6,8 @@ let variableDeclarations = {},
     ifStatements = [],
     functionDeclarations = {},
     forOfStatements = [] ,
-    forInStatements = []
+    forInStatements = [],
+    objectDeclarations = {}
 
 class VariableDeclaration {
     constructor(type, name, value) {
@@ -73,6 +74,12 @@ class ForInStatement {
     }
 }
 
+class ObjectDeclarations {
+    constructor(name) {
+        this.name = name
+    }
+}
+
 export function parseScript(script) {
     console.clear()
     let syntax = esprima.parseScript(script, { loc: true, range: true })
@@ -84,6 +91,7 @@ export function parseScript(script) {
     functionDeclarations = {}
     forOfStatements = []
     forInStatements = []
+    objectDeclarations = {}
     deconstructSyntax(syntax)
 }
 
@@ -151,9 +159,19 @@ function getArrayValues(elements) {
 function processDeclarations(node) {
     for (let declaration of node.declarations) {
         let value
-        if (declaration.init.type === 'Literal') value = declaration.init.value
-        else if (declaration.init.type === 'ArrayExpression')
+        if (declaration.init.type === 'Literal') {
+            value = declaration.init.value
+        } else if (declaration.init.type === 'ArrayExpression') {
             value = getArrayValues(declaration.init.elements)
+        } else if (declaration.init.type === 'ObjectExpression') {
+            const objectDeclaration = new ObjectDeclarations(declaration.id.name)
+            for (const property of declaration.init.properties) {
+                objectDeclaration[property.key.name] = property.value.value
+            }
+            objectDeclarations[objectDeclaration.name] = objectDeclaration
+            console.table(objectDeclaration)
+            return
+        }
 
         const variableDeclaration = new VariableDeclaration(node.kind, declaration.id.name, value)
         variableDeclarations[variableDeclaration.name] = variableDeclaration
@@ -209,4 +227,4 @@ function processForInStatement(node) {
     console.table(forInStatement)
 }
 
-export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements, functionDeclarations, forOfStatements, forInStatements }
+export { variableDeclarations, expressionStatements, assignmentExpressions, ifStatements, functionDeclarations, forOfStatements, forInStatements, objectDeclarations }

@@ -2,6 +2,7 @@ import {useState, useEffect} from "react"
 import styled from "styled-components"
 import warrior from "../img/warrior.png"
 import { gsap } from 'gsap'
+import {objectDeclarations} from '../js/parse'
 
 const Container = styled.div`
     width: 100%;
@@ -18,10 +19,10 @@ const Warrior = styled.img`
     bottom: 22%
 `
 
-
 function Objects({setOutputHandler}) {
     const [position, setPosition] = useState(0)
     const [speed, setSpeed] = useState(20)
+    const [characters, setCharacters] = useState([])
 
     const handleOnKeyDown = e => {
         if (e.code === 'ArrowRight') {
@@ -38,13 +39,28 @@ function Objects({setOutputHandler}) {
         }
     }
 
+    const outputHandler = () => {
+        for (const name in objectDeclarations) {
+            if (name === 'warrior') {
+                setCharacters(prev => [
+                    ...prev,
+                    <Warrior id="warrior" key="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
+                ])
+            }
+        }
+    }
+
     useEffect(() => { 
         gsap.to('#warrior', {x: position})
     }, [position])
 
+    useEffect(() => {
+        setOutputHandler(prev => outputHandler)
+    }, [])
+
     return (
         <Container>
-            <Warrior id="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
+            {characters}
         </Container>
     )
 }
