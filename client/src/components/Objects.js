@@ -1,7 +1,8 @@
 import {useState, useEffect} from "react"
 import styled from "styled-components"
 import warrior from "../img/warrior.png"
-import { gsap } from 'gsap'
+import wizard from '../img/wizard.png'
+import {gsap} from 'gsap'
 import {objectDeclarations} from '../js/parse'
 
 const Container = styled.div`
@@ -12,7 +13,7 @@ const Container = styled.div`
     background-position: center;
 `
 
-const Warrior = styled.img`
+const Character = styled.img`
     position: absolute;
     aspect-ratio: 1/1;
     height: 20%;
@@ -24,33 +25,23 @@ function Objects({setOutputHandler}) {
     const [speed, setSpeed] = useState(20)
     const [characters, setCharacters] = useState([])
 
-    const handleOnKeyDown = e => {
-        if (e.code === 'ArrowRight') {
-            setPosition(prev => {
-                const bound = window.innerWidth / 2 - document.querySelector('#warrior').clientWidth
-                if (prev > bound - speed) return bound
-                else return prev + speed
-            })
-        } else if (e.code === 'ArrowLeft') {
-            setPosition(prev => {
-                if (prev < speed) return 0
-                else return prev - speed
-            })
-        }
-    }
-
     const outputHandler = () => {
         for (const name in objectDeclarations) {
             if (name === 'warrior') {
                 setCharacters(prev => [
                     ...prev,
-                    <Warrior id="warrior" key="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
+                    <Character id="warrior" key="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
+                ])
+            } else if (name === 'wizard') {
+                setCharacters(prev => [
+                    ...prev,
+                    <Character id="wizard" key="wizard" tabIndex="0" onKeyDown={handleOnKeyDown} src={wizard} alt="wizard" />
                 ])
             }
         }
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         gsap.to('#warrior', {x: position})
     }, [position])
 
