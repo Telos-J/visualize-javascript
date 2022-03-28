@@ -25,9 +25,16 @@ function Objects({setOutputHandler}) {
 
     const handleOnKeyDown = e => {
         if (e.code === 'ArrowRight') {
-            setPosition(prev => prev + speed)
+            setPosition(prev => {
+                const bound = window.innerWidth / 2 - document.querySelector('#warrior').clientWidth
+                if (prev > bound - speed) return bound
+                else return prev + speed
+            })
         } else if (e.code === 'ArrowLeft') {
-            setPosition(prev => prev - speed)
+            setPosition(prev => {
+                if (prev < speed) return 0
+                else return prev - speed
+            })
         }
     }
 
