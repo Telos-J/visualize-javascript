@@ -6,7 +6,7 @@ import Conditionals from './Conditionals'
 import Functions from './Functions'
 import Arrays from './Arrays'
 import Loops from './Loops'
-import Objects from './Objects/index'
+import Objects from './Objects'
 
 function OutputSection({setOutputHandler}) {
     const [chapter, setChapter] = useContext(Context)

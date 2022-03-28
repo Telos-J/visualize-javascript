@@ -12,12 +12,12 @@ function Objects({setOutputHandler}) {
             if (name === 'warrior') {
                 setCharacters(prev => [
                     ...prev,
-                    <Warrior />
+                    <Warrior key="warrior" />
                 ])
             } else if (name === 'wizard') {
                 setCharacters(prev => [
                     ...prev,
-                    <Wizard />
+                    <Wizard key="wizard" />
                 ])
             }
         }

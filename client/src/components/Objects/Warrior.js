@@ -26,7 +26,7 @@ export default function Warrior() {
         }
     }
 
-    return <Character id="warrior" key="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
+    return <Character id="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
 }
 
 

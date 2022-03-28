@@ -8,7 +8,7 @@ export default function Wizard() {
     const [speed, setSpeed] = useState(20)
 
     useEffect(() => {
-        gsap.to('#warrior', {x: position})
+        gsap.to('#wizard', {x: position})
     }, [position])
 
     const handleOnKeyDown = e => {
@@ -26,6 +26,6 @@ export default function Wizard() {
         }
     }
 
-    return <Character id="wizard" key="wizard" tabIndex="0" onKeyDown={handleOnKeyDown} src={wizard} alt="wizard" />
+    return <Character id="wizard" tabIndex="0" onKeyDown={handleOnKeyDown} src={wizard} alt="wizard" />
 }
 
