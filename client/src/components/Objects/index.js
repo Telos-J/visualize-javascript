@@ -1,8 +1,10 @@
 import {useState, useEffect} from "react"
 import {objectDeclarations} from '../../js/parse'
 import {Container} from "./styles"
-import Warrior from "./Warrior"
-import Wizard from "./Wizard"
+import Character from "./Character"
+import warrior from '../../img/warrior.png'
+import wizard from '../../img/wizard.png'
+
 
 function Objects({setOutputHandler}) {
     const [characters, setCharacters] = useState([])
@@ -14,12 +16,12 @@ function Objects({setOutputHandler}) {
             if (name.includes('warrior')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Warrior name={name} />
+                    <Character key={name} name={name} src={warrior} />
                 ])
             } else if (name.includes('wizard')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Wizard name={name} />
+                    <Character key={name} name={name} src={wizard} />
                 ])
             }
         }

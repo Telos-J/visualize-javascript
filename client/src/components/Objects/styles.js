@@ -8,9 +8,9 @@ export const Container = styled.div`
     background-position: center;
 `
 
-export const Character = styled.img`
+export const StyledImg = styled.img`
     position: absolute;
-    aspect-ratio: 1/1;
     height: 20%;
-    bottom: 22%
+    bottom: 22%;
+    transform-origin: 30% 50%;
 `
