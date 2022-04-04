@@ -3,18 +3,18 @@ import wizard from '../../img/wizard.png'
 import {useState, useEffect} from 'react'
 import {Character} from './styles'
 
-export default function Wizard() {
+export default function Wizard({name}) {
     const [position, setPosition] = useState(0)
     const [speed, setSpeed] = useState(20)
 
     useEffect(() => {
-        gsap.to('#wizard', {x: position})
+        gsap.to(`#${name}`, {x: position})
     }, [position])
 
     const handleOnKeyDown = e => {
         if (e.code === 'ArrowRight') {
             setPosition(prev => {
-                const bound = window.innerWidth / 2 - document.querySelector('#wizard').clientWidth
+                const bound = window.innerWidth / 2 - document.querySelector(`#${name}`).clientWidth
                 if (prev > bound - speed) return bound
                 else return prev + speed
             })
@@ -26,6 +26,6 @@ export default function Wizard() {
         }
     }
 
-    return <Character id="wizard" tabIndex="0" onKeyDown={handleOnKeyDown} src={wizard} alt="wizard" />
+    return <Character key={name} id={name} tabIndex="0" onKeyDown={handleOnKeyDown} src={wizard} alt={name} />
 }
 

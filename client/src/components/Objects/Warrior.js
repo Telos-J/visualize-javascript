@@ -3,18 +3,18 @@ import warrior from '../../img/warrior.png'
 import {useState, useEffect} from 'react'
 import {Character} from './styles'
 
-export default function Warrior() {
+export default function Warrior({name}) {
     const [position, setPosition] = useState(0)
     const [speed, setSpeed] = useState(20)
 
     useEffect(() => {
-        gsap.to('#warrior', {x: position})
+        gsap.to(`#${name}`, {x: position})
     }, [position])
 
     const handleOnKeyDown = e => {
         if (e.code === 'ArrowRight') {
             setPosition(prev => {
-                const bound = window.innerWidth / 2 - document.querySelector('#warrior').clientWidth
+                const bound = window.innerWidth / 2 - document.querySelector(`#${name}`).clientWidth
                 if (prev > bound - speed) return bound
                 else return prev + speed
             })
@@ -26,7 +26,7 @@ export default function Warrior() {
         }
     }
 
-    return <Character id="warrior" tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt="warrior" />
+    return <Character key={name} id={name} tabIndex="0" onKeyDown={handleOnKeyDown} src={warrior} alt={name} />
 }
 
 

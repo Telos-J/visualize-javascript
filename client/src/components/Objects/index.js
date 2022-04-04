@@ -8,16 +8,18 @@ function Objects({setOutputHandler}) {
     const [characters, setCharacters] = useState([])
 
     const outputHandler = () => {
+        setCharacters([])
+
         for (const name in objectDeclarations) {
-            if (name === 'warrior') {
+            if (name.includes('warrior')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Warrior key="warrior" />
+                    <Warrior name={name} />
                 ])
-            } else if (name === 'wizard') {
+            } else if (name.includes('wizard')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Wizard key="wizard" />
+                    <Wizard name={name} />
                 ])
             }
         }
