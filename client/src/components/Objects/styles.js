@@ -8,7 +8,7 @@ export const Container = styled.div`
     background-position: center;
 `
 
-export const Character = styled.img`
+export const StyledImg = styled.img`
     position: absolute;
     aspect-ratio: 1/1;
     height: 20%;
