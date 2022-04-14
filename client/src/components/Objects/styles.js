@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import {ReactComponent as HP} from '../../img/hp.svg'
+
 
 export const Container = styled.div`
     width: 100%;
@@ -8,9 +10,23 @@ export const Container = styled.div`
     background-position: center;
 `
 
-export const StyledImg = styled.img`
+export const CharacterContainer = styled.div`
     position: absolute;
-    height: 20%;
     bottom: 22%;
-    transform-origin: 30% 50%;
+    height: 25%;
+    aspect-ratio: 1.14/1;
+`
+
+export const CharacterHP = styled(HP)`
+    width: 100%;
+    height: 15%;
+`
+
+export const CharacterImg = styled.img`
+    height: 85%;
+    transform: translateX(20%);
+
+    &:focus {
+        outline: none;
+    }
 `

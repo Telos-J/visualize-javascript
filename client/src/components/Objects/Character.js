@@ -1,8 +1,8 @@
 import {gsap} from 'gsap'
 import {useState, useEffect} from 'react'
-import {StyledImg} from './styles'
+import {CharacterContainer, CharacterHP, CharacterImg} from './styles'
 
-export default function Character({name, idle, attack}) {
+export default function Character({name, idle, attack, onAttack}) {
     const [position, setPosition] = useState(0)
     const [speed, setSpeed] = useState(20)
     const [src, setSrc] = useState(idle)
@@ -22,12 +22,12 @@ export default function Character({name, idle, attack}) {
         } else if (e.code === 'ArrowLeft') {
             gsap.set(`#${name}`, {scaleX: -1})
             setPosition(prev => {
-                const bound = document.querySelector(`#${name}`).clientWidth * 0.4
-                if (prev < bound) return bound
+                if (prev < speed) return 0
                 else return prev - speed
             })
         } else if (e.code === 'Space') {
             setSrc(attack)
+            onAttack()
         }
     }
 
@@ -37,7 +37,10 @@ export default function Character({name, idle, attack}) {
         }
     }
 
-    return <StyledImg id={name} tabIndex="0" onKeyDown={handleOnKeyDown} onKeyUp={handleOnKeyUp} src={src} alt={name} />
+    return (
+        <CharacterContainer id={name}>
+            <CharacterHP />
+            <CharacterImg tabIndex="0" onKeyDown={handleOnKeyDown} onKeyUp={handleOnKeyUp} src={src} alt={name} />
+        </CharacterContainer>
+    )
 }
-
-
