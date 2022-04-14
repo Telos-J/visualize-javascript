@@ -7,14 +7,8 @@ import warriorAttack from '../../img/warriorAttack.png'
 import wizardIdle from '../../img/wizardIdle.png'
 import wizardAttack from '../../img/wizardAttack.png'
 
-
-
 function Objects({setOutputHandler}) {
     const [characters, setCharacters] = useState([])
-
-    const handleAttack = () => {
-        console.log(characters)
-    }
 
     const outputHandler = () => {
         setCharacters([])
@@ -23,12 +17,12 @@ function Objects({setOutputHandler}) {
             if (name.includes('warrior')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Character key={name} name={name} idle={warriorIdle} attack={warriorAttack} onAttack={handleAttack} />
+                    <Character key={name} name={name} idleSrc={warriorIdle} attackSrc={warriorAttack} />
                 ])
             } else if (name.includes('wizard')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Character key={name} name={name} idle={wizardIdle} attack={wizardAttack} onAttack={handleAttack} />
+                    <Character key={name} name={name} idleSrc={wizardIdle} attackSrc={wizardAttack} />
                 ])
             }
         }

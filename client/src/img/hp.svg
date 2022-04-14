@@ -1,4 +1,7 @@
 <svg width="833" height="191" viewBox="0 0 833 191" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="10" y="10" width="813" height="171" fill="white" stroke="black" stroke-width="20"/>
-<rect id="hp-fill" x="20" y="20" width="793" height="151" fill="#FF0000"/>
+    <rect x="10" y="10" width="813" height="171" fill="white" stroke="black" stroke-width="20"/>
+    <rect id="hp-fill" x="20" y="20" width="793" height="151" fill="#FF0000" mask="url(#mask)"/>
+    <mask id="mask">
+        <rect x="20" y="20" width="793" height="151" fill="white"/>
+    </mask>
 </svg>
