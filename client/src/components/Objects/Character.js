@@ -27,7 +27,7 @@ export default function Character({name, idle, attack}) {
                 else return prev - speed
             })
         } else if (e.code === 'Space') {
-            setSrc (attack)
+            setSrc(attack)
         }
     }
 
