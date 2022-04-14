@@ -2,8 +2,11 @@ import {useState, useEffect} from "react"
 import {objectDeclarations} from '../../js/parse'
 import {Container} from "./styles"
 import Character from "./Character"
-import warrior from '../../img/warrior.png'
-import wizard from '../../img/wizard.png'
+import warriorIdle from '../../img/warriorIdle.png'
+import warriorAttack from '../../img/warriorAttack.png'
+import wizardIdle from '../../img/wizardIdle.png'
+import wizardAttack from '../../img/wizardAttack.png'
+
 
 
 function Objects({setOutputHandler}) {
@@ -16,12 +19,12 @@ function Objects({setOutputHandler}) {
             if (name.includes('warrior')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Character key={name} name={name} src={warrior} />
+                    <Character key={name} name={name} idle={warriorIdle} attack={warriorAttack} />
                 ])
             } else if (name.includes('wizard')) {
                 setCharacters(prev => [
                     ...prev,
-                    <Character key={name} name={name} src={wizard} />
+                    <Character key={name} name={name} idle={wizardIdle} attack={wizardAttack} />
                 ])
             }
         }
