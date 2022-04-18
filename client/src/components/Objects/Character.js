@@ -32,17 +32,17 @@ export default function Character({properties, idleSrc, attackSrc, characters}) 
     }, [health])
 
     const attack = () => {
-        console.log(characters)
-        //const characters = document.querySelectorAll('.character')
-        //const self = document.querySelector(`#${name}`)
-        //for (const character of characters) {
-        //    if (character.id !== name && isCollide(self, character)) {
-        //        const attack = objectDeclarations[self.id].attack
-        //        const defense = objectDeclarations[character.id].defense
-        //        const damage = attack > defense ? attack - defense : 0
-        //        setHealth(prev => prev > damage ? prev - damage : 0)
-        //    }
-        //}
+        const items = [...characters]
+        const self = document.querySelector(`#${name}`)
+        for (const character of items) {
+            const characterDOM = document.querySelector(`#${character.properties.name}`)
+            if (character.properties.name !== name && isCollide(self, characterDOM)) {
+                const attack = properties.attack
+                const defense = characters.properties.defense
+                const damage = attack > defense ? attack - defense : 0
+                setHealth(prev => prev > damage ? prev - damage : 0)
+            }
+        }
     }
 
     const handleOnKeyDown = e => {

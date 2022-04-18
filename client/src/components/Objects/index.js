@@ -32,7 +32,7 @@ function Objects({setOutputHandler}) {
         <Container>
             {
                 characters.map(character => (
-                    <Character key={`${character.properties.name}${Date.now()}`} properties={character.properties} idleSrc={character.idleSrc} attackSrc={character.attackSrc} characters={characters} />
+                    <Character key={`${character.properties.name}${Date.now()}`} properties={character.properties} idleSrc={character.idleSrc} attackSrc={character.attackSrc} characters={characters} setCharacters={setCharacters} />
                 ))
             }
         </Container>

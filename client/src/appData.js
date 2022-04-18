@@ -123,6 +123,9 @@ const descriptions = [
     </>,
     <>
         <h1>Chapter 7. Objects</h1>
+        <p>
+            
+        </p>
     </>
 
 ]
