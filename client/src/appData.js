@@ -124,7 +124,13 @@ const descriptions = [
     <>
         <h1>Chapter 7. Objects</h1>
         <p>
-            
+            Objects store collections of key-value pairs. When we use objects code, we can iterate through objects using the For...in syntax. Also, We can navigate complex, nested objects by chaining operators.
+        </p>
+        <p>
+            You can create a warrior or a wizard, and edit number of health, attack, defense, and speed. Also, when you click spacebar, the characters change their body shape that look like they are attacking.
+        </p>
+        <p>
+            I made the red hp bar above the characters, to show the characters' health. So, when you attack other character by clicking spacebar, it's hp decreases, so the hp will get lower and lower.
         </p>
     </>
 
