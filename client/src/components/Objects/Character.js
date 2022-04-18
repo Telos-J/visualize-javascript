@@ -1,6 +1,7 @@
 import {gsap} from 'gsap'
 import {useState, useEffect} from 'react'
 import {CharacterContainer, CharacterHP, CharacterImg} from './styles'
+import {objectDeclarations} from '../../js/parse'
 
 function isCollide(a, b) {
     const aRect = a.getBoundingClientRect();
@@ -14,7 +15,9 @@ function isCollide(a, b) {
     );
 }
 
-export default function Character({name, idleSrc, attackSrc}) {
+export default function Character({properties, idleSrc, attackSrc, characters}) {
+    const [name, setName] = useState(properties.name)
+    const [health, setHealth] = useState(properties.health)
     const [position, setPosition] = useState(0)
     const [speed, setSpeed] = useState(20)
     const [src, setSrc] = useState(idleSrc)
@@ -23,14 +26,23 @@ export default function Character({name, idleSrc, attackSrc}) {
         gsap.to(`#${name}`, {x: position})
     }, [position])
 
+    useEffect(() => {
+        const hp = document.querySelector(`#${name} #hp-fill`)
+        gsap.to(hp, {width: `${health}%`})
+    }, [health])
+
     const attack = () => {
-        const characters = document.querySelectorAll('.character')
-        const self = document.querySelector(`#${name}`)
-        for (const character of characters) {
-            if (character.id !== name && isCollide(self, character)) {
-                console.log('ouch')
-            }
-        }
+        console.log(characters)
+        //const characters = document.querySelectorAll('.character')
+        //const self = document.querySelector(`#${name}`)
+        //for (const character of characters) {
+        //    if (character.id !== name && isCollide(self, character)) {
+        //        const attack = objectDeclarations[self.id].attack
+        //        const defense = objectDeclarations[character.id].defense
+        //        const damage = attack > defense ? attack - defense : 0
+        //        setHealth(prev => prev > damage ? prev - damage : 0)
+        //    }
+        //}
     }
 
     const handleOnKeyDown = e => {

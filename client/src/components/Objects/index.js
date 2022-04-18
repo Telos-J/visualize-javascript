@@ -11,21 +11,17 @@ function Objects({setOutputHandler}) {
     const [characters, setCharacters] = useState([])
 
     const outputHandler = () => {
-        setCharacters([])
+        const items = []
 
         for (const name in objectDeclarations) {
             if (name.includes('warrior')) {
-                setCharacters(prev => [
-                    ...prev,
-                    <Character key={name} name={name} idleSrc={warriorIdle} attackSrc={warriorAttack} />
-                ])
+                items.push({properties: objectDeclarations[name], idleSrc: warriorIdle, attackSrc: warriorAttack})
             } else if (name.includes('wizard')) {
-                setCharacters(prev => [
-                    ...prev,
-                    <Character key={name} name={name} idleSrc={wizardIdle} attackSrc={wizardAttack} />
-                ])
+                items.push({properties: objectDeclarations[name], idleSrc: wizardIdle, attackSrc: wizardAttack})
             }
         }
+
+        setCharacters(items)
     }
 
     useEffect(() => {
@@ -34,7 +30,11 @@ function Objects({setOutputHandler}) {
 
     return (
         <Container>
-            {characters}
+            {
+                characters.map(character => (
+                    <Character key={`${character.properties.name}${Date.now()}`} properties={character.properties} idleSrc={character.idleSrc} attackSrc={character.attackSrc} characters={characters} />
+                ))
+            }
         </Container>
     )
 }
