@@ -1,46 +1,16 @@
 {
-  "name": "visualize-javascript",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
-  "directories": {
-    "doc": "doc"
-  },
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack serve --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Telos-J/visualize-javascript.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Telos-J/visualize-javascript/issues"
-  },
-  "homepage": "https://github.com/Telos-J/visualize-javascript#readme",
-  "devDependencies": {
-    "clean-webpack-plugin": "*",
-    "css-loader": "^5.2.6",
-    "file-loader": "^6.2.0",
-    "gh-pages": "^3.2.0",
-    "html-loader": "^2.1.2",
-    "html-webpack-plugin": "^5.3.1",
-    "sass": "^1.34.0",
-    "sass-loader": "^11.1.1",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"nodemon server\" \"npm run client\""
   },
   "dependencies": {
-    "esprima": "^4.0.1",
-    "gsap": "npm:@gsap/shockingly@^3.7.0",
-    "monaco-editor": "^0.24.0",
-    "monaco-editor-webpack-plugin": "^3.1.0"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
   }
 }

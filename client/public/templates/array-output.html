@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Functions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        #container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            background-image: url("../img/brick.png");
+            background-size: 100px;
+        }
+
+        #cinema-image {
+            position: absolute;
+            width: 50%;
+            top: 2rem;
+        }
+
+        .movie {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .movie-frame {
+            position: absolute;
+            width: 30%;
+            transform: translateY(2%) scale(1.06);
+        }
+
+        .movie-poster {
+            position: absolute;
+            width: 21%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="cinema-image" src="../img/cinema.png" alt="cinema">
+        <div class="movie">
+            <img class="movie-frame" src="../img/movieFrame.png" alt="movie-frame">
+            <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="movie-frame">
+        </div>
+    </div>
+</body>
+</html>
