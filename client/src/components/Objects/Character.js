@@ -36,11 +36,14 @@ export default function Character({properties, idleSrc, attackSrc, characters}) 
         const self = document.querySelector(`#${name}`)
         for (const character of items) {
             const characterDOM = document.querySelector(`#${character.properties.name}`)
+            const hp = characterDOM.querySelector(`#hp-fill`)
             if (character.properties.name !== name && isCollide(self, characterDOM)) {
                 const attack = properties.attack
-                const defense = characters.properties.defense
+                const defense = character.properties.defense
                 const damage = attack > defense ? attack - defense : 0
-                setHealth(prev => prev > damage ? prev - damage : 0)
+                const prevHealth = characterDOM.dataset.health
+                characterDOM.dataset.health = prevHealth > damage ? prevHealth - damage : 0
+                gsap.to(hp, {width: `${characterDOM.dataset.health}%`})
             }
         }
     }
@@ -82,9 +85,9 @@ export default function Character({properties, idleSrc, attackSrc, characters}) 
     }
 
     return (
-        <CharacterContainer id={name} className="character">
+        <CharacterContainer id={name} className="character" data-health={properties.health}>
             <CharacterHP id="hp" />
             <CharacterImg tabIndex="0" onFocus={handleOnFocus} onBlur={handleOnBlur} onKeyDown={handleOnKeyDown} onKeyUp={handleOnKeyUp} src={src} alt={name} />
-        </CharacterContainer>
+        </CharacterContainer >
     )
 }
