@@ -24,8 +24,7 @@ for (const item of items) {
     `const warrior = {
     health: 100,
     attack: 80,
-    defense: 60,
-    speed: 50
+    defense: 60
 }`
 ]
 
