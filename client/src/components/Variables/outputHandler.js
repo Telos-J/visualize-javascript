@@ -1,5 +1,5 @@
-import { gsap } from 'gsap'
-import { variableDeclarations, assignmentExpressions, expressionStatements } from '../../js/parse'
+import {gsap} from 'gsap'
+import {variableDeclarations, assignmentExpressions, expressionStatements} from '../../js/parse'
 
 function outputHandler() {
     const output = document.querySelector('#box')
@@ -7,13 +7,17 @@ function outputHandler() {
         output.querySelector('#label text tspan').innerHTML = variableDeclarations[name].name
         output.querySelector('#data text tspan').innerHTML = variableDeclarations[name].value
         if (variableDeclarations[name].type === 'const') {
-            output.querySelector('#slider').setAttribute('fill', '#FF8B84')
-            output.querySelector('#lid').setAttribute('fill', '#FF5247')
+            output.querySelector('#floor').setAttribute('fill', '#FF755C')
+            output.querySelector('#backwall').setAttribute('fill', '#FF4181')
             output.querySelector('#frontwall').setAttribute('fill', '#FF6A61')
+            output.querySelector('#lid').setAttribute('fill', '#FF5247')
+            output.querySelector('#slider').setAttribute('fill', '#FF8B84')
         } else if (variableDeclarations[name].type === 'let') {
-            output.querySelector('#slider').setAttribute('fill', '#90FF7D')
-            output.querySelector('#lid').setAttribute('fill', '#0FEA4C')
+            output.querySelector('#floor').setAttribute('fill', '#59955F')
+            output.querySelector('#backwall').setAttribute('fill', '#53BE51')
             output.querySelector('#frontwall').setAttribute('fill', '#75F55F')
+            output.querySelector('#lid').setAttribute('fill', '#0FEA4C')
+            output.querySelector('#slider').setAttribute('fill', '#90FF7D')
         }
     }
     insertData()
@@ -41,7 +45,7 @@ function outputHandler() {
 function insertData() {
     const box = document.querySelector('#box')
     const data = document.querySelector('#data')
-    gsap.set(data, { x: 0 })
+    gsap.set(data, {x: 0})
     box.classList.remove('closed')
 
     gsap.to(data, {
@@ -79,4 +83,4 @@ function updateData(value) {
     })
 }
 
-export { outputHandler }
+export {outputHandler}

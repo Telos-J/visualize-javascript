@@ -1,6 +1,6 @@
 const editorValues = [
     `console.log('Hello World!')`,
-    `let animal = 'rabbit'`,
+    `const animal = 'rabbit'`,
     `const currentTime = 8
 const wakeupTime = 9
 
@@ -34,31 +34,39 @@ const descriptions = [
     <>
         <h1>Chapter 1. console.log</h1>
         <p>
-            Computer language is how we communicate with computer. Editor is where we speak to
-            computer and Console is where computer speak to us and it displays important messages,
-            like errors, for developers.
+            In this chapter, we look at programming in three parts: the computer language, the code
+            editor, and the console.
         </p>
         <p>
-            Console.log is a method that print or log what we put in parentheses. Press Run and see
-            how the computer says 'Hello World!'. Play around and change 'Hello World!' to whatever
-            you want!
+            Computer language is a language we use to communicate with the
+            computer. The code which we write using a code editor allows us to speak to the computer
+            and tell it what to do. The console can be thought of as the tool which the computer uses
+            to speak to us and display important messages, like errors, to developers.
+        </p>
+        <p>
+            <code>console.log</code> is a method that prints out whatever we put in the parentheses to the console.
+            Press Run and see how the computer says 'Hello World!'. Play around and change 'Hello World!'
+            to whatever you want.
         </p>
     </>,
     <>
         <h1>Chapter 2. Variables</h1>
         <p>
-            Variables hold reusable data in a program and associate it with a name. There are 2
-            types of variables : const and let. Const is a type of variable that you can't change.
-            Let is another type of variable that you can update.
+            Generally speaking, there are two things that the computer is told to do: 1. Store data and 2. Process the data.
+            In this chapter we will look at how the computer uses variables to store data.
         </p>
         <p>
-            Red color box represents const variable which is unable to update. Green color box
-            represents let variable which is able to update.
+            Variables can be thought of as containers used to store reusable data and associate it with a name.
+            Here, we will look at two types of variables: <code>const</code> and <code>let</code>. <code>const</code> is a type
+            of variable that you cannot change. <code>let</code> is another type of variable that you can update.
         </p>
         <p>
-            We can create, update and read variables. You can create variables by writing the
-            keyword of the type of variables(let / const) and then the variable name on the left of
-            the = sign. Next, put data on the right side of = sign.
+            A red color box represents a <code>const</code> variable and a green color box represents a <code>let</code> variable.
+            Run the code and try changing the variable type to a <code>let</code>.
+        </p>
+        <p>
+            We can create, update and read variables. You can create variables by specifying the
+            type of variable then the variable name on the left of the = sign, and the data to store on the right of the = sign.
         </p>
         <p>
             We can update variables by writing the name of variables on the left of = sign and
