@@ -15,7 +15,7 @@ function outputHandler() {
     const totalPrice = document.querySelector('#total-price')
     groceriesContainer.innerHTML = ''
     gsap.set(groceryItemBase, {opacity: 1})
-    totalPrice.innerHTML = '$0'
+    totalPrice.innerHTML = '$15'
 
     const groceries = variableDeclarations.items?.value
     const prices = variableDeclarations.prices?.value
