@@ -96,9 +96,10 @@ export function parseScript(script) {
 }
 
 function deconstructSyntax(syntax) {
+    let obj
     for (let node of syntax.body) {
         if (node.type === 'ExpressionStatement') {
-            processExpression(node.expression)
+            obj = processExpression(node.expression)
         } else if (node.type === 'VariableDeclaration') {
             processDeclarations(node)
         } else if (node.type === 'IfStatement') {
@@ -111,6 +112,7 @@ function deconstructSyntax(syntax) {
             processForInStatement(node)
         }
     }
+    return obj
 }
 
 function processExpression(expression) {
